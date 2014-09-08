@@ -1,0 +1,58 @@
+.navbar {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.navbar li a {
+  color: black !important;
+  font-family: 'lato-hai' !important;
+  letter-spacing: 5px !important;
+}
+
+.navbar li a:hover {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbar-nav {
+  margin-top: 10px;
+}
+
+#follow {
+  margin-top: 20px;
+  margin-left: 275px;
+}
+
+#follow i {
+  color: black;
+}
+
+#follow a {
+  margin-right: 10px;
+}
+
+#registration_modal .modal-body {
+  height: 150px;
+}
+
+#mailing_list {
+  color: black;
+  font-size: 14px;
+  font-family: 'lato-hai' !important;
+}
+
+#logo {
+  color: black;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-family: 'hai-lato';
+  letter-spacing: 20px;
+  margin-left: 35px;
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+.contact-container.container-fluid
+  .row.booking-container.pull-left
+    .col-12.col-lg-12
+      %h4 Booking Agent
+      %hr
+      %strong TJ Olsen TJO Presents
+      %br
+      = fa_icon 'phone', text: '(347) 798-1193'
+      %br
+      = fa_icon 'envelope'
+      = mail_to 'tj@tjopresents.com'
+      %br
+      = fa_icon 'globe'
+      = link_to 'website', 'http://www.tjopresents.com', {target: '_blank'}
+  .row.contact-container
+    .col-8.col-lg-8
+      %form#contactForm{role: 'form'}
+        .form-group
+          %input#contact_name.form-control{name: 'name', placeholder: 'Name', type: 'text'}
+        .form-group
+          %input#email.form-control{name: 'email', placeholder: 'Email Address', type: 'email'}
+        .form-group
+          %textarea#message.form-control{cols: '100', name: 'message', placeholder: 'Send a message to Charles Ellsworth', rows: '10'}
+        %button#contactSubmit.btn.btn-lg.pull-right Submit
+

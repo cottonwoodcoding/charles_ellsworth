@@ -1,0 +1,11 @@
+#registration_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h4 Join the mailing list
+        %form
+          .form-group
+            %input#register_email.form-control{placeholder: "Enter email", type: 'email'}
+          .pull-right
+            %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+            %button.btn.btn-primary{type: 'submit'} Submit

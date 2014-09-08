@@ -29,17 +29,14 @@
         %li
           = link_to("Bio", bio_index_path, class: 'nav-item')
         %li
-          = link_to("Music", '/', class: 'nav-item')
+          = link_to("Look & Listen", '/', class: 'nav-item')
         %li
           = link_to("Shows", '/', class: 'nav-item')
         %li
-          = link_to("Videos", '/', class: 'nav-item')
-        %li
           = link_to("Store", '/', class: 'nav-item')
         %li
-          = link_to("Photos", '/', class: 'nav-item')
-        %li
-          = link_to("Contact", contact_index_path, class: 'nav-item')
+          = link_to(contact_index_path, class: 'nav-item') do
+            = fa_icon "envelope"
         %li.dropdown
           %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears

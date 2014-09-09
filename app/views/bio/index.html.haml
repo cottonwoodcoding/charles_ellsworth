@@ -1,4 +1,7 @@
-.row
-  .bio-container
-    Born and raised in the White Mountains of Arizona, Charles Ellsworth first gained an appreciation for a simple, not so distant past.  His vivid lyrics and near-familiar melodies weave to tell stories of heartbreak and loneliness while shining a light on the perseverance of the human spirit.  Charles has subtle way of exploring the idea that even when all seems lost, there is always a sliver of hope.  Declan Ryan of Independent Clauses (www.independentclauses.com) called his and Vincent Draper's recent release Salt Lake City: A Love Story, "a triumph for american songwriting…blending outlaw grit with a raw streak of self-awareness." His ability to go from a stomp-your-boots anthem reminiscent of Springsteen, to a simple love song in the vein of Townes Van Zandt assures that it won't be long before his name, lyrics, and melodies are stuck in music lovers head's everywhere.
+.container.bio-container
+  .row
+    .bio-picture-container.col-md-6.xs-12
+      = image_tag('charles.jpg', id: 'bio-picture')
+    .bio-info.col-md-6.xs-12
+      = "Born and raised in the White Mountains of Arizona, Charles Ellsworth first gained an appreciation for a simple, not so distant past.  His vivid lyrics and near-familiar melodies weave to tell stories of heartbreak and loneliness while shining a light on the perseverance of the human spirit.  Charles has subtle way of exploring the idea that even when all seems lost, there is always a sliver of hope. Declan Ryan of #{link_to('Independent Clauses', 'http://www.independentclauses.com', {target: '_blank'})} called his and Vincent Draper's recent release Salt Lake City: A Love Story, 'a triumph for american songwriting…blending outlaw grit with a raw streak of self-awareness.' His ability to go from a stomp-your-boots anthem reminiscent of Springsteen, to a simple love song in the vein of Townes Van Zandt assures that it won't be long before his name, lyrics, and melodies are stuck in music lovers head's everywhere.".html_safe
 

@@ -1,25 +1,36 @@
-.contact-container.container-fluid
-  .row.booking-container.pull-left
-    .col-12.col-lg-12
-      %h4 Booking Agent
-      %hr
-      %strong TJ Olsen TJO Presents
-      %br
-      = fa_icon 'phone', text: '(347) 798-1193'
-      %br
-      = fa_icon 'envelope'
-      = mail_to 'tj@tjopresents.com'
-      %br
-      = fa_icon 'globe'
-      = link_to 'website', 'http://www.tjopresents.com', {target: '_blank'}
-  .row.contact-container
-    .col-8.col-lg-8
-      %form#contactForm{role: 'form'}
-        .form-group
-          %input#contact_name.form-control{name: 'name', placeholder: 'Name', type: 'text'}
-        .form-group
-          %input#email.form-control{name: 'email', placeholder: 'Email Address', type: 'email'}
-        .form-group
-          %textarea#message.form-control{cols: '100', name: 'message', placeholder: 'Send a message to Charles Ellsworth', rows: '10'}
-        %button#contactSubmit.btn.btn-lg.pull-right Submit
+.container
+  .row
+    .row
+      .col-sm-4.col-lg-4
+        .panel
+          .panel-heading
+            %h3
+              %i.icon-pushpin.main-color
+              .font-m Booking Agent
+          .panel-body
+            %address
+              %strong.font-m TJ Olsen TJO Presents
+              %br
+              = fa_icon 'phone', text: '(347) 798-1193'
+              %br
+              = fa_icon 'envelope'
+              = mail_to 'tj@tjopresents.com'
+              %br
+              = fa_icon 'globe'
+              = link_to 'website', 'http://www.tjopresents.com', {target: '_blank'}
+      .col-12.col-lg-8
+        .panel
+          .panel-body
+            %form#feedbackForm{:role => "form"}
+              .form-group
+                %input#name.form-control{:name => "name", :placeholder => "Name", :type => "text"}
+                  %span.help-block{:style => "display: none;"} Please enter your name.
+              .form-group
+                %input#email.form-control{:name => "email", :placeholder => "Email Address", :type => "email"}
+                  %span.help-block{:style => "display: none;"} Please enter a valid e-mail address.
+              .form-group
+                %textarea#message.form-control{:cols => "100", :name => "message", :placeholder => "Send a message to Charles Ellsworth", :rows => "10"}
+                %span.help-block{:style => "display: none;"} Please enter a message.
+              %button#contactSubmit.btn.btn-lg.pull-right{:style => "display: block; margin-top: 10px;", :type => "submit"} Submit
+
 

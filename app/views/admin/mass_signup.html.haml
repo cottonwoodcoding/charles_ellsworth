@@ -1,0 +1,11 @@
+%h1.text-center Mailing List Signup
+%hr
+  .container.text-center
+    = image_tag 'charles-state-room.jpg', class: 'mass-signup-picture'
+    .mass-signup
+      %form#mass-signup-form.form-inline{:role => "form"}
+        .form-group
+          .input-group
+            .input-group-addon @
+            %input.form-control{name: 'email', :placeholder => "Enter email", :type => "email", required: true}
+        %button.btn.btn-default{:type => "submit"} Sign up

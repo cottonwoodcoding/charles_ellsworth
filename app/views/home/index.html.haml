@@ -1,3 +1,9 @@
-.banner
--#  .image-container
-    = image_tag 'cover.jpg', id: 'main_image'
+%section#banner.pages.banner{'data-type' => 'background', 'data-speed' => '10'}
+%section#latest.pages.container-fluid.content-section{'data-type' => 'background', 'data-speed' => '10'}
+  .row
+    .col-lg-10.col-lg-offset-1
+      %h2.lato Latest
+      .top-arrow
+        %a.page-scroll{href: '#logo'}
+          = fa_icon 'arrow-circle-up 4x'
+      .latest-content

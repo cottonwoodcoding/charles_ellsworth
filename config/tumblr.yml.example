@@ -1,0 +1,5 @@
+KEY: 'tumbler api key'
+SECRET: 'tubmler api secret'
+TOKEN: 'tumbler oauth token'
+TOKEN_SECRET: 'tumbler token secret'
+BLOG: 'blog domain'

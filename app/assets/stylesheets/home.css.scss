@@ -7,11 +7,6 @@ body {
 
 .banner {
   position: relative;
-  //height: 650px;
-  //margin: 0 auto;
-  //width: 100%;
-  //top: 50px;
-  //left: 0;
   z-index: -1;
   background: image-url('cover.jpg') 50% 0 no-repeat fixed; min-height: 650px;
   height: 650px;
@@ -19,14 +14,6 @@ body {
   width: 100%;
   max-width: 1920px;
   position: relative;
-  //background-size: 90% 180%;
-  //background-attachment: fixed;
-  //background-position: center center;
-  //background-repeat: no-repeat;
-  //-moz-background-size: cover;
-  //-webkit-background-size: cover;
-  //-o-background-size: cover;
-  //background-size: cover;
 }
 
 #latest {
@@ -37,17 +24,13 @@ body {
   position: relative;
   -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
   box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  //background-position: fixed;
   background-size: 100% 100%;
-  //min-height: 600px;
-  //width: 100%;
-  //position: relative;
 }
 
 .content-container {
   height: 500px;
   position: absolute;
-  top: 150px;
+  top: 50px;
 }
 
 .content-div {

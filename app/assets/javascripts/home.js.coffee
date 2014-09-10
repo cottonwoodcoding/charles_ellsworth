@@ -1,7 +1,12 @@
 $ ->
   window.onload = ->
     if window.location.pathname == '/'
-      $('#registration_modal').modal('show')
+      $.ajax
+        type: 'GET'
+        url: '/mailing_list/signed_up'
+        success: (data) ->
+          if data == 'not signed up'
+            $('#registration_modal').modal 'show'
       $.ajax '/home/update_latest',
         type: 'GET'
         success: (data) ->

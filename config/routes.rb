@@ -8,6 +8,8 @@ CharlesEllsworth::Application.routes.draw do
   get "news/index"
   get "admin/mass_signup"
   get "home/update_latest"
+  get 'mailing_list/signed_up'
 
-  post "admin/signup"
+  post "mailing_list/signup"
+
 end

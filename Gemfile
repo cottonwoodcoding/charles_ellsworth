@@ -17,6 +17,7 @@ gem 'tinymce-rails'
 gem 'protected_attributes'
 gem 'tumblr_client'
 gem 'twitter'
+gem 'skrollr-rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

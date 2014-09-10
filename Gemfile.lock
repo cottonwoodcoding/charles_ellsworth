@@ -170,6 +170,8 @@ GEM
       activeresource (>= 3.0.0)
       thor (>= 0.14.4)
     simple_oauth (0.2.0)
+    skrollr-rails (0.6.26)
+      rails (>= 3.1.0)
     slop (3.6.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -246,6 +248,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   sdoc
   shopify_api
+  skrollr-rails
   sqlite3
   therubyracer
   tinymce-rails

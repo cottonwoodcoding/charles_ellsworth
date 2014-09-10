@@ -1,0 +1,30 @@
+.blog-content.pull-left
+  .title.lato Blog
+  .posts
+    - @recent_posts.each do |post|
+      - caption = post['caption']
+      .blog-content-div
+        - if caption.present?
+          - caption = ActionView::Base.full_sanitizer.sanitize(caption)
+          %p.caption
+            = caption
+        - else
+          %p
+        - case post['type']
+        - when 'video'
+          %iframe{src: post['player'][1]['embed_code'].split('src=').last.split("width").first.gsub("\"",'').strip, width: '500', height: '500', frameborder: '0', scrolling: 'no'}
+        - when 'photo'
+          - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 500 }.first
+          %img{src: photo['url']}
+        - else
+          Other
+        %br
+        %br
+.twitter-content
+  .twitter-header.lato.title
+    = fa_icon 'twitter 2x', text: 'Twitter'
+  .posts
+    - @tweets.each do |tweet|
+      .tweet-content
+        = tweet.full_text
+      %br

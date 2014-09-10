@@ -14,4 +14,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr.menu
 //= require_tree .

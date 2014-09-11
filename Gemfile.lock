@@ -173,6 +173,7 @@ GEM
     skrollr-rails (0.6.26)
       rails (>= 3.1.0)
     slop (3.6.0)
+    soundmanager-rails (1.0.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -249,6 +250,7 @@ DEPENDENCIES
   sdoc
   shopify_api
   skrollr-rails
+  soundmanager-rails
   sqlite3
   therubyracer
   tinymce-rails

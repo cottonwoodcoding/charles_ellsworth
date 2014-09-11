@@ -1,4 +1,5 @@
 CharlesEllsworth::Application.routes.draw do
+  get "media/index"
   devise_for :admins
 
   root 'home#index'

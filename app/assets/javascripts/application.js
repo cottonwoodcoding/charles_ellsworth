@@ -17,4 +17,5 @@
 //= require skrollr
 //= require skrollr.ie
 //= require skrollr.menu
+//= require soundmanager2
 //= require_tree .

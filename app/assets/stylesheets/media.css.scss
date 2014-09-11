@@ -1,0 +1,46 @@
+.media-bar {
+  text-align: center;
+  z-index: 10;
+}
+
+.media-link {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#music {
+  position: relative;
+  z-index: -1;
+  background: image-url('music.jpg') 50% 0 no-repeat fixed; min-height: 650px;
+  height: 650px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1920px;
+  position: relative;
+}
+
+#video {
+  background: image-url('video.jpg') 50% 0 no-repeat; min-height: 600px;
+  height: 600px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  background-size: 100% 100%;
+}
+
+#photo {
+  background: image-url('photo.jpg') 50% 0 no-repeat; min-height: 600px;
+  height: 600px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  background-size: 100% 100%;
+}
+
+.back-bar {
+  background-color: rgba(0,0,0,.5);
+}

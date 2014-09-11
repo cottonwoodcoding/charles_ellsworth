@@ -14,7 +14,109 @@
         %a#top_link.media-link.black.hidden{href: '#logo'}
           = fa_icon 'arrow-circle-up'
   %section#music{'data-type' => 'background', 'data-speed' => '10'}
+  .clearfix
+  .sm2-bar-ui.playlist-open
+    .bd.sm2-main-controls{:style => "background-color: rgb(0, 172, 255);"}
+      .sm2-inline-texture
+      .sm2-inline-gradient
+      .sm2-inline-element.sm2-button-element
+        .sm2-button-bd
+          %a.sm2-inline-button.play-pause{:href => "#play"} Play / pause
+      .sm2-inline-element.sm2-inline-status
+        .sm2-playlist
+          .sm2-playlist-target
+            %ul.sm2-playlist-bd
+              %li
+                %b SonReal
+                \- Let Me
+                %span.label Explicit
+        .sm2-progress
+          .sm2-row
+            .sm2-inline-time 0:00
+            .sm2-progress-bd
+              .sm2-progress-track
+                .sm2-progress-bar
+                .sm2-progress-ball
+                  .icon-overlay
+            .sm2-inline-duration 0:00
+      .sm2-inline-element.sm2-button-element.sm2-volume
+        .sm2-button-bd
+          %span.sm2-inline-button.sm2-volume-control.volume-shade
+          %a.sm2-inline-button.sm2-volume-control{:href => "#volume"} volume
+      .sm2-inline-element.sm2-button-element.sm2-menu
+        .sm2-button-bd
+          %a.sm2-inline-button.menu{:href => "#menu"} menu
+    .bd.sm2-playlist-drawer.sm2-element{:style => "height: 150px; background-color: rgb(0, 172, 255);"}
+      .sm2-inline-texture
+        .sm2-box-shadow
+      / playlist content is mirrored here
+      .sm2-playlist-wrapper
+        %ul.sm2-playlist-bd
+          %li.selected
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Let%20Me%20%28Prod%202oolman%29.mp3"}
+              %b SonReal
+              \- Let Me
+              %span.label Explicit
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3"}
+              %b SonReal
+              \- LA (Prod. Chin Injetti)
+              %span.label Explicit
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"}
+              %b SonReal
+              \- People Asking
+              %span.label Explicit
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd,%20Saukrates.mp3"}
+              %b SonReal
+              \- Already There Remix ft. Rich Kidd, Saukrates
+              %span.label Explicit
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"}
+              %b The Fugitives
+              \- Graffiti Sex
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/Adrian%20Glynn%20-%20Seven%20Or%20Eight%20Days.mp3"}
+              %b Adrian Glynn
+              \- Seven Or Eight Days
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/SonReal%20-%20I%20Tried.mp3"}
+              %b SonReal
+              \- I Tried
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/mpc/20060826%20-%20Armstrong.mp3"} Armstrong Beat
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3"} Untitled Groove
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4"} Birds In Kaua'i (AAC)
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg"} Po'ipu Beach Waves (OGG)
+          %li
+            %a{:href => "http://freshly-ground.com/data/audio/sm2/bottle-pop.wav"} A corked beer bottle (WAV)
+          %li
+            %a{:href => "../../demo/_mp3/rain.mp3"} Rain
+      .sm2-extra-controls
+        .bd
+          .sm2-inline-element.sm2-button-element
+            %a.sm2-inline-button.previous{:href => "#prev", :title => "Previous"} < previous
+          .sm2-inline-element.sm2-button-element
+            %a.sm2-inline-button.next{:href => "#next", :title => "Next"} > next
+          / unimplemented
+          /
+            <div class="sm2-inline-element sm2-button-element disabled">
+            <a href="#repeat" title="Repeat playlist" class="sm2-inline-button repeat">∞ repeat</a>
+            </div>
+          / unimplemented
+          /
+            <div class="sm2-inline-element sm2-button-element disabled">
+            <a href="#shuffle" title="Shuffle" class="sm2-inline-button shuffle">shuffle</a>
+            </div>
   %section#video{'data-type' => 'background', 'data-speed' => '10'}
+    .video-player
+      .youtube
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "//www.youtube.com/embed/videoseries?list=PLS1O71vdoxKKZ9zD7ThkCZrK054cM53u4", :width => "853"}
+  .clearfix
   %section#photo{'data-type' => 'background', 'data-speed' => '10'}
 -#.sm2-bar-ui
   .bd.sm2-main-controls

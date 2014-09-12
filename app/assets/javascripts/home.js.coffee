@@ -12,6 +12,7 @@ $ ->
        type: 'GET'
        success: (data) ->
          $('.latest-content').append(data)
+         $('.spinner').remove()
 
   $window = $(window)
   $("section[data-type=\"background\"]").each ->

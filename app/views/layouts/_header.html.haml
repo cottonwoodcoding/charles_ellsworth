@@ -25,7 +25,10 @@
     .collapse.navbar-collapse#nav-items.navbar-right
       %ul.nav.navbar-nav
         %li
-          = link_to("Latest", '#latest', class: 'nav-item')
+          - if controller_name == 'home'
+            = link_to("Latest", "#latest", class: 'nav-item')
+          - else
+            = link_to("Latest", "#{home_path}#latest", class: 'nav-item')
         %li
           = link_to("Bio", bio_index_path, class: 'nav-item')
         %li

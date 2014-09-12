@@ -1,0 +1,10 @@
+- @tracks.each_with_index do |t, i|
+  - selected = ''
+  - if i == 0
+    - selected = 'selected'
+  %li{class: selected}
+    %a{href: t.external_urls['spotify']}
+      %b
+        = t.name
+      - if t.explicit
+        %span.label Explicit

@@ -16,3 +16,5 @@
 /tmp
 /config/tumblr.yml
 /config/twitter.yml
+
+*.key

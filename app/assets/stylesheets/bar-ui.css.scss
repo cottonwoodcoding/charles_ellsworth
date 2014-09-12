@@ -655,6 +655,10 @@
 .bd.sm2-playlist-drawer {
  /* optional: absolute positioning */
  /* position: absolute; */
+ height: 150px;
+ max-height: 150px;
+ overflow-y: scroll;
+ background-color: '#767676';
  z-index: 3;
  border-radius: 0px;
  width: 100%;
@@ -664,6 +668,12 @@
  display: block;
  overflow: hidden;
  transition: height 0.2s ease-in-out;
+}
+
+.bd.sm2-playlist-drawer.sm2-element {
+  height: 150px;
+  max-height: 150px;
+  overflow-y: scroll;
 }
 
 .sm2-bar-ui.fixed .bd.sm2-playlist-drawer,

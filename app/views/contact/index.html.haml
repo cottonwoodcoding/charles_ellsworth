@@ -21,15 +21,15 @@
       .col-12.col-lg-8
         .panel
           .panel-body
-            %form#feedbackForm{:role => "form"}
+            %form#contactForm{:role => "form"}
               .form-group
-                %input#name.form-control{:name => "name", :placeholder => "Name", :type => "text"}
+                %input#name.form-control{:name => "name", :placeholder => "Name", :type => "text", :required => 'required'}
                   %span.help-block{:style => "display: none;"} Please enter your name.
               .form-group
-                %input#email.form-control{:name => "email", :placeholder => "Email Address", :type => "email"}
+                %input#email.form-control{:name => "email", :placeholder => "Email Address", :type => "email", :required => 'required'}
                   %span.help-block{:style => "display: none;"} Please enter a valid e-mail address.
               .form-group
-                %textarea#message.form-control{:cols => "100", :name => "message", :placeholder => "Send a message to Charles Ellsworth", :rows => "10"}
+                %textarea#message.form-control{:cols => "100", :name => "message", :placeholder => "Send a message to Charles Ellsworth", :rows => "10", :required => 'required'}
                 %span.help-block{:style => "display: none;"} Please enter a message.
               %button#contactSubmit.btn.btn-lg.pull-right{:style => "display: block; margin-top: 10px;", :type => "submit"} Submit
 

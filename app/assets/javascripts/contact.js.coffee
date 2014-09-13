@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('#contactForm').submit (e) ->
+    e.preventDefault()
+    $form = $(@)
+    $.ajax
+      type: 'POST'
+      url: '/contact/contact'
+      data: $form.serializeArray()
+      success: (data) ->
+        $form[0].reset()
+        bootbox.alert(data)
+      error: (data) ->
+        bootbox.alert(data)

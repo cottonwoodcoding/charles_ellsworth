@@ -1,0 +1,3 @@
+sendgrid_username: 'username'
+sendgrid_password: 'password'
+sendgrid_domain: 'domain'

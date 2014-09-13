@@ -14,5 +14,5 @@ CharlesEllsworth::Application.routes.draw do
   get 'media/albums'
 
   post "mailing_list/signup"
-
+  post 'contact/contact'
 end

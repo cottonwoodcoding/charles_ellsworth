@@ -1,0 +1,15 @@
+ALBUMS:
+ - NAME: 'album name'
+   ART: 'album art file name'
+   TRACKS:
+     - TRACK_NUMBER: 1
+       NAME: 'Song Name'
+       FEATURING:
+        - 'featured artists'
+       FILENAME: 'file name on app server'
+       EXPLICIT: true
+       STREAM: true
+
+
+
+

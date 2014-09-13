@@ -17,4 +17,6 @@
 /config/tumblr.yml
 /config/twitter.yml
 /config/email.yml
+/config/do.yml
+/config/albums.yml
 *.key

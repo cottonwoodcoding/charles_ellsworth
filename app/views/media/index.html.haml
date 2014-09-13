@@ -15,50 +15,80 @@
           = fa_icon 'arrow-circle-up'
   %section#music{'data-type' => 'background', 'data-speed' => '10'}
   .clearfix
-  .music-container
-    .music-player
-      .sm2-bar-ui.playlist-open
-        .bd.sm2-main-controls
-          .sm2-inline-texture
-          .sm2-inline-gradient
-          .sm2-inline-element.sm2-button-element
-            .sm2-button-bd
-              %a.sm2-inline-button.play-pause{:href => "#play"} Play / pause
-          .sm2-inline-element.sm2-inline-status
-            .sm2-playlist
-              .sm2-playlist-target
-                %ul.sm2-playlist-bd
-                  %li
-                    %b
-                    %span.label
-            .sm2-progress
-              .sm2-row
-                .sm2-inline-time 0:00
-                .sm2-progress-bd
-                  .sm2-progress-track
-                    .sm2-progress-bar
-                    .sm2-progress-ball
-                      .icon-overlay
-                .sm2-inline-duration 0:00
-          .sm2-inline-element.sm2-button-element.sm2-volume
-            .sm2-button-bd
-              %span.sm2-inline-button.sm2-volume-control.volume-shade
-              %a.sm2-inline-button.sm2-volume-control{:href => "#volume"} volume
-          .sm2-inline-element.sm2-button-element.sm2-menu
-            .sm2-button-bd
-              %a.sm2-inline-button.menu{:href => "#menu"} menu
-        .bd.sm2-playlist-drawer.sm2-element
-          .sm2-inline-texture
-            .sm2-box-shadow
-          / playlist content is mirrored here
-          .sm2-playlist-wrapper
-            %ul#player_playlist.sm2-playlist-bd
-          .sm2-extra-controls
-            .bd
-              .sm2-inline-element.sm2-button-element
-                %a.sm2-inline-button.previous{:href => "#prev", :title => "Previous"} &lt; previous
-              .sm2-inline-element.sm2-button-element
-                %a.sm2-inline-button.next{:href => "#next", :title => "Next"} &gt; next
+  .music-container.container-fluid
+    .row
+      .catalog.col-md-4
+        %h3.lato Purchase Entire Catalog $10
+        %form{method: 'POST', action: 'media/purchase'}
+          %ul.list-unstyled.album-content
+            - @albums['ALBUMS'].each do |a|
+              %li
+                %h4.lato.album-title
+                  = a['NAME']
+                %ul
+                  - a['TRACKS'].each do |t|
+                    .checkbox
+                      %label
+                        %input.lato{type: 'checkbox', name: t['FILENAME']}
+                        = t['NAME']
+          %button#purchase.btn.btn-default{type: 'Submit'} Purchase
+      .album-art.col-md-2
+        - art = @albums['ALBUMS'].first['ART']
+        - file = File.exists?("#{Rails.root}/app/assets/images/album_art/#{art}") ? art : "no_album_art.jpeg"
+        %img.album-img{src: image_url("album_art/#{file}")}
+      .music-player.col-md-5
+        .sm2-bar-ui.playlist-open.full-width
+          .bd.sm2-main-controls
+            .sm2-inline-texture
+            .sm2-inline-gradient
+            .sm2-inline-element.sm2-button-element
+              .sm2-button-bd
+                %a.sm2-inline-button.play-pause{:href => "#play"} Play / pause
+            .sm2-inline-element.sm2-inline-status
+              .sm2-playlist
+                .sm2-playlist-target
+                  %ul.sm2-playlist-bd
+                    %li
+                      %b
+                      %span.label
+              .sm2-progress
+                .sm2-row
+                  .sm2-inline-time 0:00
+                  .sm2-progress-bd
+                    .sm2-progress-track
+                      .sm2-progress-bar
+                      .sm2-progress-ball
+                        .icon-overlay
+                  .sm2-inline-duration 0:00
+            .sm2-inline-element.sm2-button-element.sm2-volume
+              .sm2-button-bd
+                %span.sm2-inline-button.sm2-volume-control.volume-shade
+                %a.sm2-inline-button.sm2-volume-control{:href => "#volume"} volume
+            .sm2-inline-element.sm2-button-element.sm2-menu
+              .sm2-button-bd
+                %a.sm2-inline-button.menu{:href => "#menu"} menu
+          .bd.sm2-playlist-drawer.sm2-element
+            .sm2-inline-texture
+              .sm2-box-shadow
+            / playlist content is mirrored here
+            .sm2-playlist-wrapper
+              %ul#player_playlist.sm2-playlist-bd
+                - @albums['ALBUMS'].each do |a|
+                  - a['TRACKS'].each_with_index do |t, i|
+                    - selected = i == 0 ? 'selected' : 'not-selected'
+                    %li{class: selected}
+                      %a.track{href: "http://#{ENV['DIGITAL_OCEAN_IP']}/#{t['FILENAME']}", 'data-album-art' => a['ART']}
+                        %b
+                          = a["NAME"]
+                        = " - #{t["NAME"]}"
+                        - if t["EXPLICIT"]
+                          %span.label Explicit
+            .sm2-extra-controls
+              .bd
+                .sm2-inline-element.sm2-button-element
+                  %a.sm2-inline-button.previous{:href => "#prev", :title => "Previous"} &lt; previous
+                .sm2-inline-element.sm2-button-element
+                  %a.sm2-inline-button.next{:href => "#next", :title => "Next"} &gt; next
   %section#video{'data-type' => 'background', 'data-speed' => '10'}
     .video-player
       .youtube

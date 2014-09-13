@@ -62,10 +62,40 @@
 
 .music-container {
   position: absolute;
+  width: 100%;
   top: 30%;
   left: 5%;
 }
 
 .music-player {
   position: relative;
+}
+
+.catalog {
+  position: relative;
+  max-height: 500px;
+  background-color: rgba(255,255, 255, .4);
+  margin-right: 2%;
+}
+
+.album-content {
+  max-height: 490px;
+  overflow-y: scroll;
+}
+
+.album-img {
+  position: relative;
+  height: 192px;
+  width: 192px;
+}
+
+#purchase {
+  width: 100%;
+  margin-bottom: 5px;
+  color: white;
+  background-color: black;
+}
+
+.album-title {
+  text-decoration: underline;
 }

@@ -1,4 +1,4 @@
-.blog-content.pull-left
+.blog-content.col-md-6
   .title.lato Blog
   .posts
     - @recent_posts.each do |post|
@@ -20,7 +20,7 @@
           Other
         %br
         %br
-.twitter-content
+.twitter-content.col-md-6
   .twitter-header.lato.title
     = fa_icon 'twitter 2x', text: 'Twitter'
   .posts

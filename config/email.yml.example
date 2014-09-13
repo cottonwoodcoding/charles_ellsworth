@@ -1,3 +1,4 @@
 sendgrid_username: 'username'
 sendgrid_password: 'password'
 sendgrid_domain: 'domain'
+send_to: 'email, email, email'

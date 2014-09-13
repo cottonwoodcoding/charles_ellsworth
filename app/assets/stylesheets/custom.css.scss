@@ -23,17 +23,22 @@
   margin-top: 10px;
 }
 
+#no-follow {
+  a {
+    text-decoration: none;
+  }
+  margin-left: 15px;
+}
+
 #follow {
   margin-top: 20px;
   margin-left: 275px;
-}
-
-#follow i {
-  color: black;
-}
-
-#follow a {
-  margin-right: 10px;
+  i {
+    color: black;
+  }
+  a {
+    margin-right: 10px;
+  }
 }
 
 #registration_modal .modal-body {

@@ -1,0 +1,39 @@
+%h2.center.lato Upcoming Shows
+.add-show.lato.center
+  %a#add_show{href: '#'}
+    = fa_icon "plus"
+    Add Show
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Date
+      %th Venue
+      %th Location
+      %th Tickets
+      - if admin_signed_in?
+        %th Remove
+  %tbody
+    - @shows.each do |show|
+      %tr.show-data{'data-id' => show.id}
+        %td
+          = show.date.strftime("%D %r")
+        %td
+          = show.venue
+        %td
+          = show.location
+        %td
+          - tickets = show.tickets
+          - if tickets
+            %a{href: show.tickets, target: "_blank"} Tickets
+          - else
+            = link_to(contact_index_path) do
+              = fa_icon "envelope"
+        - if admin_signed_in?
+          %td
+            %a.remove-show{href: '#'}
+              = fa_icon "trash"
+            %a.edit-show{href: '#'}
+              = fa_icon "pencil"
+
+
+= render partial: 'layouts/add_show_modal'

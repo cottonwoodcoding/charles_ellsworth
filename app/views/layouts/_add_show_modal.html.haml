@@ -1,0 +1,27 @@
+#add_show_modal.modal.fade{'data-backdrop' => 'static', 'data-keyboard' => false}
+  .modal-dialog
+    .modal-content
+      .modal-title
+        %h2.center Add show
+      .modal-body
+        %form#add_show_form.form-horizontal{role: 'form'}
+          .form-group
+            %label.control-label.col-sm-2{for: 'date_picker'} Date:
+            .col-sm-10
+              %input#date_picker.datepicker.datetimepicker{name: 'date', type: 'text', 'data-behaviour' => 'datepicker'}
+          .form-group
+            %label.control-label.col-sm-2{for: 'venue'} Venue:
+            .col-sm-10
+              %input#venue{name: 'venue', type: 'text', 'placeholder' => 'Tiki Bar'}
+          .form-group
+            %label.control-label.col-sm-2{for: 'location'} Location:
+            .col-sm-10
+              %input#location{name: 'location', type: 'text', 'placeholder' => 'Salt Lake City, UT'}
+          .form-group
+            %label.control-label.col-sm-2{for: 'tickets'} Tickets:
+            .col-sm-10
+              %input#tickets{name: 'tickets', type: 'text', 'placeholder' => 'http://buytickets.com'}
+        %button.btn.btn-default{'data-dismiss' => 'modal'} Close
+        %button.btn.btn-primary{type: 'submit'} Submit
+
+

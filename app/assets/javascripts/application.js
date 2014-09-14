@@ -18,4 +18,7 @@
 //= require skrollr.ie
 //= require skrollr.menu
 //= require soundmanager2
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require_tree .

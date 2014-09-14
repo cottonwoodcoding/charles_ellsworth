@@ -19,7 +19,9 @@ gem 'tumblr_client'
 gem 'twitter'
 gem 'skrollr-rails'
 gem 'soundmanager-rails'
-gem 'barge'
+gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
+      :branch => 'master', :submodules => true
+gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

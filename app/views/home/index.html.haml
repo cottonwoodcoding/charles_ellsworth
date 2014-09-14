@@ -8,7 +8,11 @@
         %h2.lato Latest
         %img.spinner{src: image_path('ajax-loader.gif')}
         .top-arrow
+          %a#tumblr_anchor.page-scroll{href: '#tumblr'}
+            = fa_icon 'tumblr 2x'
           %a.page-scroll{href: '#logo'}
             = fa_icon 'arrow-circle-up 2x'
+          %a#twitter_anchor.page-scroll{href: '#twitter'}
+            = fa_icon 'twitter 2x'
         .container-fluid
           .latest-content.row

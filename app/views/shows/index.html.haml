@@ -1,8 +1,9 @@
 %h2.center.lato Upcoming Shows
 .add-show.lato.center
-  %a#add_show{href: '#'}
-    = fa_icon "plus"
-    Add Show
+  - if admin_signed_in?
+    %a#add_show{href: '#'}
+      = fa_icon "plus"
+      Add Show
   %table
     %tbody
       .add_show_body

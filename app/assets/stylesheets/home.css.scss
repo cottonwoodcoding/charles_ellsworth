@@ -1,3 +1,12 @@
+@media (max-width: 990px) {
+  #tumblr_anchor {
+    display: inline !important;
+  }
+  #twitter_anchor {
+    display: inline !important;
+  }
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -86,4 +95,21 @@ body {
 .spinner {
   margin-left: 50%;
   width: 50px;
+}
+
+#tumblr_anchor {
+  display: none;
+}
+
+#twitter_anchor {
+  display: none;
+}
+
+.page-scroll {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.tumblr-media {
+  position: relative;
 }

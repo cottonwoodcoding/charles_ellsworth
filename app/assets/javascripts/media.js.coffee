@@ -29,3 +29,8 @@ $ ->
       coords = "50% " + yPos + "px"
       $bgobj.css backgroundPosition: coords
 
+  $('.prev-button').on 'click', (e) ->
+    $('.carousel').carousel('prev')
+
+  $('.next-button').on 'click', (e) ->
+    $('.carousel').carousel('next')

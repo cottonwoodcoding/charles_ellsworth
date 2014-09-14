@@ -33,7 +33,7 @@
 
 #photo {
   background: image-url('photo.jpg') 50% 0 no-repeat; min-height: 800px;
-  height: 800px;
+  height: 1000px;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -98,4 +98,17 @@
 
 .album-title {
   text-decoration: underline;
+}
+
+.photos {
+  max-width: 800px;
+  max-height: 800px;
+  margin-top: 100px;
+  margin-left: 15%;
+  position: absolute;
+}
+
+.img-sized {
+  width: 800px;
+  height: 450px;
 }

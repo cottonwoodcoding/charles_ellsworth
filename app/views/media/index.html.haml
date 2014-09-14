@@ -17,7 +17,8 @@
     .music-container.container-fluid
       .row
         .catalog.col-md-4
-          %h3.lato Purchase Entire Catalog $10
+          %h2.center.lato Entire Catalog $10
+          %h4 For a limited time only get Charles Ellsworth's entire catalog of over 30 songs including never released music for only $10
           %form{method: 'POST', action: 'media/purchase'}
             %ul.list-unstyled.album-content
               - @albums['ALBUMS'].each do |a|

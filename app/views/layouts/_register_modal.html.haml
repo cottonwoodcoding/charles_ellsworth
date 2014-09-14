@@ -2,10 +2,13 @@
   .modal-dialog
     .modal-content
       .modal-body
-        %h4 Join the mailing list
+        %h2 Join the Wandering Man Newsletter to be the first to hear about Tour Dates, New Music, and More from Charles Ellsworth
         %form#registration_form
           .form-group
             %input#register_email.form-control{name: 'email', placeholder: "Enter email", type: 'email'}
+            %hr
+            = image_tag 'front_page.jpg', class: 'newsletter-picture'
+
           .pull-right
             %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
             %button.btn.btn-primary{type: 'submit'} Submit

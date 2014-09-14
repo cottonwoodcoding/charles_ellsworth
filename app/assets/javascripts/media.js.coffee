@@ -34,3 +34,5 @@ $ ->
 
   $('.next-button').on 'click', (e) ->
     $('.carousel').carousel('next')
+
+  $(".carousel").carousel interval: 4000

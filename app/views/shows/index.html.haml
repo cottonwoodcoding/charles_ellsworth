@@ -3,6 +3,9 @@
   %a#add_show{href: '#'}
     = fa_icon "plus"
     Add Show
+  %table
+    %tbody
+      .add_show_body
 %table.table.table-striped.table-hover
   %thead
     %tr
@@ -15,19 +18,22 @@
   %tbody
     - @shows.each do |show|
       %tr.show-data{'data-id' => show.id}
-        %td
+        %td#date_field
           = show.date.strftime("%D %r")
-        %td
+        %td#venue_field
           = show.venue
-        %td
+        %td#location_field
           = show.location
-        %td
-          - tickets = show.tickets
-          - if tickets
+        %td#purchase_option
+          - case show.purchase_options
+          - when 'at_the_door'
+            At The Door
+          - when 'free_show'
+            Free Show
+          - when 'ticket_url'
             %a{href: show.tickets, target: "_blank"} Tickets
           - else
-            = link_to(contact_index_path) do
-              = fa_icon "envelope"
+            = link_to "Contact", contact_index_path
         - if admin_signed_in?
           %td
             %a.remove-show{href: '#'}

@@ -1,27 +1,44 @@
-#add_show_modal.modal.fade{'data-backdrop' => 'static', 'data-keyboard' => false}
+#add_show_modal.modal.fade{'area-labelledby' => '#addShowLabel', 'area-hidden' => 'true', 'data-backdrop' => 'static', 'data-keyboard' => false}
   .modal-dialog
     .modal-content
       .modal-title
-        %h2.center Add show
+        %h2#modal_title.center Add show
       .modal-body
-        %form#add_show_form.form-horizontal{role: 'form'}
-          .form-group
-            %label.control-label.col-sm-2{for: 'date_picker'} Date:
-            .col-sm-10
-              %input#date_picker.datepicker.datetimepicker{name: 'date', type: 'text', 'data-behaviour' => 'datepicker'}
-          .form-group
-            %label.control-label.col-sm-2{for: 'venue'} Venue:
-            .col-sm-10
-              %input#venue{name: 'venue', type: 'text', 'placeholder' => 'Tiki Bar'}
-          .form-group
-            %label.control-label.col-sm-2{for: 'location'} Location:
-            .col-sm-10
-              %input#location{name: 'location', type: 'text', 'placeholder' => 'Salt Lake City, UT'}
-          .form-group
-            %label.control-label.col-sm-2{for: 'tickets'} Tickets:
-            .col-sm-10
-              %input#tickets{name: 'tickets', type: 'text', 'placeholder' => 'http://buytickets.com'}
-        %button.btn.btn-default{'data-dismiss' => 'modal'} Close
-        %button.btn.btn-primary{type: 'submit'} Submit
+        .add_show_container
+          %form#add_show_form.form-horizontal{role: 'form', method: 'POST', action: '/shows/add_show'}
+            = hidden_field_tag :authenticity_token, form_authenticity_token
+            .form-group
+              %label.control-label.col-sm-2{for: 'date_picker'} Date:
+              .col-sm-10
+                %input#date_picker.datepicker.datetimepicker{name: 'date', type: 'text', 'data-behaviour' => 'datepicker', 'required' => 'required'}
+            .form-group
+              %label.control-label.col-sm-2{for: 'venue'} Venue:
+              .col-sm-10
+                %input#venue{name: 'venue', type: 'text', 'placeholder' => 'Tiki Bar'}
+            .form-group
+              %label.control-label.col-sm-2{for: 'location'} Location:
+              .col-sm-10
+                %input#location{name: 'location', type: 'text', 'placeholder' => 'Salt Lake City, UT'}
+            .form-group#ticket_group
+              %label.control-label.col-sm-2{for: 'tickets'} Tickets:
+              .col-sm-10
+                %input#tickets{name: 'tickets', type: 'text', 'placeholder' => 'http://buytickets.com'}
+            .form-group
+              .radio
+                %label
+                  %input#ticket_url{type: 'radio', name: 'show_options', value: 'ticket_url', 'checked' => 'checked'} Purchase tickets online
+              .radio
+                %label
+                  %input#door{type: 'radio', name: 'show_options', value: 'at_the_door'} Tickets at the door only
+              .radio
+                %label
+                  %input#free_show{type: 'radio', name: 'show_options', value: 'free_show'} Free Show
+              .radio
+                %label
+                  %input#contact_show{type: 'radio', name: 'show_options', value: 'contact_show'} Contact / No Details
+            %input#edit_id.hidden{name: 'hidden_id', value: ''}
+            .modal-footer
+              %button#close.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+              %button.btn.btn-primary{type: 'submit'} Submit
 
 

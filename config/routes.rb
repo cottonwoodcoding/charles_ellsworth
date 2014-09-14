@@ -16,4 +16,6 @@ CharlesEllsworth::Application.routes.draw do
 
   post "mailing_list/signup"
   post 'contact/contact'
+  post "shows/add_show"
+  post "shows/delete"
 end

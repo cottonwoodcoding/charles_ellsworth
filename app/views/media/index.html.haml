@@ -19,19 +19,21 @@
         .catalog.col-md-4
           %h2.center.lato Entire Catalog $10
           %h4 For a limited time only get Charles Ellsworth's entire catalog of over 30 songs including never released music for only $10
-          %form{method: 'POST', action: 'media/purchase'}
-            %ul.list-unstyled.album-content
-              - @albums['ALBUMS'].each do |a|
-                %li
-                  %h4.lato.album-title
-                    = a['NAME']
-                  %ul
-                    - a['TRACKS'].each do |t|
-                      .checkbox
-                        %label
-                          %input.lato{"checked" => "checked", type: 'checkbox', name: t['FILENAME']}
-                          = t['NAME']
-            %button#purchase.btn.btn-default{type: 'Submit'} Purchase
+          .catalog-content
+            %form{method: 'POST', action: 'media/purchase'}
+              .catalog-body
+                %ul.list-unstyled.album-content
+                  - @albums['ALBUMS'].each do |a|
+                    %li
+                      %h4.lato.album-title
+                        = a['NAME']
+                      %ul
+                        - a['TRACKS'].each do |t|
+                          .checkbox
+                            %label
+                              %input.lato{"checked" => "checked", type: 'checkbox', name: t['FILENAME']}
+                              = t['NAME']
+              %button#purchase.btn.btn-default{type: 'Submit'} Purchase
         .album-art.col-md-2.hidden-xs
           - art = @albums['ALBUMS'].first['ART']
           - file = File.exists?("#{Rails.root}/app/assets/images/album_art/#{art}") ? art : "no_album_art.jpeg"
@@ -90,7 +92,7 @@
                   .sm2-inline-element.sm2-button-element
                     %a.sm2-inline-button.next{:href => "#next", :title => "Next"} &gt; next
   %section#video{'data-type' => 'background', 'data-speed' => '10'}
-    .video-player
+    .video-container
       .youtube
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "//www.youtube.com/embed/videoseries?list=PLS1O71vdoxKKZ9zD7ThkCZrK054cM53u4", :width => "853"}
   .clearfix

@@ -56,5 +56,5 @@ $ ->
 
   $('#add_show_modal').on 'hide.bs.modal', ->
     $('#modal_title').text('Add Show')
-    $('#add_show_form').reset()
+    $('#add_show_form')[0].reset()
 

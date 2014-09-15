@@ -10,4 +10,7 @@
   = link_to "https://play.spotify.com/artist/31Ca3LzvrbaSP30RY36jxe?play=true&utm_source=open.spotify.com&utm_medium=open", {target: '_blank'} do
     = fa_icon 'spotify'
   | &nbsp
-  %a#mailing_list{href: '#'} Join Mailing List
+  - if id == 'no-follow'
+    %a#mailing_list{href: '#'} Mailing List
+  - else
+    %a#mailing_list{href: '#'} Join Mailing List

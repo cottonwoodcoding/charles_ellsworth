@@ -10,13 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require tinymce
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require skrollr
-//= require skrollr.ie
-//= require skrollr.menu
 //= require soundmanager2
 //= require moment
 //= require bootstrap-datetimepicker

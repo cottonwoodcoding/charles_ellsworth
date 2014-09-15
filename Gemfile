@@ -7,22 +7,20 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'haml-rails'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'shopify_api'
 gem "font-awesome-rails"
 gem 'rmagick'
 gem 'devise'
 gem 'underscore-rails'
-gem 'gmaps4rails'
-gem 'tinymce-rails'
 gem 'protected_attributes'
 gem 'tumblr_client'
 gem 'twitter'
-gem 'skrollr-rails'
 gem 'soundmanager-rails'
+gem 'simple_form'
 gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
       :branch => 'master', :submodules => true
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'chronic'
+gem 'picasa'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

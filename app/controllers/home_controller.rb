@@ -12,12 +12,12 @@ class HomeController < ApplicationController
     end
 
     client = Tumblr::Client.new({
-      consumer_key: ENV['KEY'],
-      consumer_secret: ENV['SECRET'],
-      oauth_token: ENV['TOKEN'],
-      oauth_token_secret: ENV['TOKEN_SECRET']
+      consumer_key: ENV['TUMBLR_KEY'],
+      consumer_secret: ENV['TUMBLR_SECRET'],
+      oauth_token: ENV['TUMBLR_TOKEN'],
+      oauth_token_secret: ENV['TUMBLR_TOKEN_SECRET']
     })
-    blog = ENV['BLOG']
+    blog = ENV['TUMBLR_BLOG']
     @recent_posts = client.posts(blog, limit: 20)['posts']
 
     twitter = File.expand_path(File.dirname(__FILE__) + '../../../config/twitter.yml')

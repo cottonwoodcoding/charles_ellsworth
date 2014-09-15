@@ -30,7 +30,7 @@ $ ->
       $bgobj.css backgroundPosition: coords
 
   window.onload = ->
-    if window.location.pathname = '/media'
+    if window.location.pathname == '/media'
       $('.carousel-control').addClass('hidden')
       $.ajax '/media/albums',
         type: 'GET'

@@ -46,7 +46,9 @@
 }
 
 .newsletter-picture {
-  height: 377px;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
 }
 
 #mailing_list {

@@ -97,14 +97,17 @@
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "//www.youtube.com/embed/videoseries?list=PLS1O71vdoxKKZ9zD7ThkCZrK054cM53u4", :width => "853"}
   .clearfix
   %section#photo{'data-type' => 'background', 'data-speed' => '10'}
-    .photos
-      #photo-carousel.carousel.slide{'data-ride' => 'carousel'}
-        .carousel-inner
-          - @photos.each_with_index do |p, i|
-            - active = i == 0 ? 'active' : 'not-active'
-            .item{class: active, "data-slide-number" => "#{i}"}
-              %img.img-responsive.img-sized{src: image_url("/assets/photos/#{p[:picture]}")}
-        %a.prev-button.left.carousel-control{"data-slide" => "prev", :href => "#carousel-prev", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-left
-        %a.next-button.right.carousel-control{"data-slide" => "next", :href => "#carousel-next", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-right
+    .row
+      .photo-conatiner.col-md-8
+        .photos
+          #photo-carousel.carousel.slide{'data-ride' => 'carousel'}
+            #inner.carousel-inner
+            %a.hidden.prev-button.left.carousel-control{"data-slide" => "prev", :href => "#carousel-prev", :role => "button"}
+              %span.glyphicon.glyphicon-chevron-left
+            %a.hidden.next-button.right.carousel-control{"data-slide" => "next", :href => "#carousel-next", :role => "button"}
+              %span.glyphicon.glyphicon-chevron-right
+      .photo-albums.col-md-2
+        .photo-album-container
+          %h3 Alubms
+          %hr
+          %ul#photo_album_list.list-unstyled

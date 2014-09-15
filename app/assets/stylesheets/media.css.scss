@@ -1,3 +1,13 @@
+@media (max-width: 1192px) {
+  .photo-albums {
+    position: absolute;
+    left: 0;
+  }
+  #photo-carousel {
+    margin-top: 50%;
+  }
+}
+
 @media (max-width: 1120px) {
   .album-art {
     display: none;
@@ -167,4 +177,15 @@
   margin-top: 100px;
   padding-left: 15%;
   position: absolute;
+}
+
+.photo-album-container {
+  margin-top: 100px;
+}
+
+#photo_album_list {
+  font-size: 20px;
+  li a {
+    color: black;
+  }
 }

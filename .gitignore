@@ -22,3 +22,4 @@ log/
 /config/albums.yml
 *.key
 /public/assets
+/config/picasa.yml

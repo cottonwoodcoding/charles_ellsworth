@@ -1,11 +1,44 @@
 @media (max-width: 990px) {
-  #tumblr_anchor {
-    display: inline !important;
-  }
   #twitter_anchor {
     display: inline !important;
   }
+
+  #tumbler_anchor_responsive {
+    display: inline !important;
+  }
+
+  #top_anchor_responsive {
+    display: inline !important;
+  }
 }
+
+@media (max-width: 560px) {
+  #latest {
+    max-height: 700px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .banner-area {
+    margin-left: 400px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .banner-area {
+    margin-left: 200px !important;
+  }
+  .banner {
+    background: image-url('cover.jpg') 40% 0 no-repeat fixed !important; min-height: 650px !important;
+ }
+}
+
+@media (max-width: 500px) {
+  .banner-area {
+    margin-left: 70px !important;
+  }
+}
+
 
 body {
   height: 100%;
@@ -14,7 +47,7 @@ body {
   background-attachment: fixed;
 }
 
-#logo {
+#logo_img {
   img {
     max-width: 200px;
     max-height: 200px;
@@ -102,11 +135,15 @@ body {
   width: 50px;
 }
 
-#tumblr_anchor {
+#tumblr_anchor_responsive {
   display: none;
 }
 
 #twitter_anchor {
+  display: none;
+}
+
+#top_anchor_responsive {
   display: none;
 }
 

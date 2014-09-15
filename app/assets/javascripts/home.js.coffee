@@ -22,4 +22,3 @@ $ ->
 
       coords = "50% " + yPos + "px"
       $bgobj.css backgroundPosition: coords
-

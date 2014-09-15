@@ -21,3 +21,4 @@ log/
 /config/do.yml
 /config/albums.yml
 *.key
+/public/assets

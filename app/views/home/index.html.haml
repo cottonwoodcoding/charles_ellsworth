@@ -1,19 +1,18 @@
 %section#banner.pages.banner{'data-type' => 'background', 'data-speed' => '10'}
-  .banner-area
-    #logo
-      = image_tag('charles-logo.png')
+  .row
+    .banner-area
+      #logo_img
+        = image_tag('charles-logo.png')
 %section#latest.pages.container-fluid.content-section{'data-type' => 'background', 'data-speed' => '10'}
   .row
     .col-lg-10.col-lg-offset-1
       .content-container
         %h2.lato Latest
-        %img.spinner{src: image_path('ajax-loader.gif')}
         .top-arrow
-          %a#tumblr_anchor.page-scroll{href: '#tumblr'}
-            = fa_icon 'tumblr 2x'
           %a.page-scroll{href: '#logo'}
             = fa_icon 'arrow-circle-up 2x'
           %a#twitter_anchor.page-scroll{href: '#twitter'}
             = fa_icon 'twitter 2x'
+        %img.spinner{src: image_path('ajax-loader.gif')}
         .container-fluid
           .latest-content.row

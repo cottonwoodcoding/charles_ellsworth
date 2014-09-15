@@ -36,6 +36,7 @@
             %li
               - if admin_signed_in?
                 = link_to 'Mass Signup', '/admin/mass_signup'
+                = link_to 'Email List', 'admin/mailing_list_emails'
                 = link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'delete'
               - else
                 = link_to 'Sign In', new_admin_session_path, method: :get

@@ -13,6 +13,7 @@ CharlesEllsworth::Application.routes.draw do
   get 'media', to: 'media#index'
   get 'media/albums'
   get 'shows', to: 'shows#index'
+  get 'admin/mailing_list_emails'
 
   post "mailing_list/signup"
   post 'contact/contact'

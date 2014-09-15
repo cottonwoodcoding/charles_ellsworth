@@ -1,0 +1,13 @@
+%h2.text-center Mailing List Emails
+%div.text-center
+  %button#comma_button.btn
+    Show Comma Formatted
+  %button#email_list_button.btn.hide
+    Show Email List
+%hr
+#emails.text-center
+  - @emails.each do |email|
+    %p
+      = email
+#comma_emails.text-center.hide
+  =@emails.join(',')

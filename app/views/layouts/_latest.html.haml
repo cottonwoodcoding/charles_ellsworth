@@ -3,24 +3,24 @@
   #tumblr.posts
     - @recent_posts.each do |post|
       - caption = post['caption']
-      .blog-content-div
-        - if caption.present?
-          - caption = ActionView::Base.full_sanitizer.sanitize(caption)
-          %p.caption
-            = caption
+      - if caption.present?
+        - caption = ActionView::Base.full_sanitizer.sanitize(caption)
+        %p.caption
+          = caption
+      - else
+        %p
+      .tubmlr-media
+        - case post['type']
+        - when 'video'
+          .outer-frame.embed-responsive.embed-responsive-4by3
+            %iframe.tumblr-frame.embed-responsive-item{src: post['player'][1]['embed_code'].split('src=').last.split("width").first.gsub("\"",'').strip, width: '500', height: '500', frameborder: '0', scrolling: 'no'}
+        - when 'photo'
+          - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 500 }.first
+          %img.tumblr-photo{src: photo['url']}
         - else
-          %p
-        .tubmlr-media
-          - case post['type']
-          - when 'video'
-            %iframe{src: post['player'][1]['embed_code'].split('src=').last.split("width").first.gsub("\"",'').strip, width: '500', height: '500', frameborder: '0', scrolling: 'no'}
-          - when 'photo'
-            - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 500 }.first
-            %img{src: photo['url']}
-          - else
-            Other
-        %br
-        %br
+          Other
+      %br
+      %br
 .twitter-content.col-md-6.col-sm-12
   .twitter-header.lato.title
     = fa_icon 'twitter 2x', text: 'Twitter'

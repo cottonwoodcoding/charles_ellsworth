@@ -16,6 +16,10 @@
   #latest {
     max-height: 700px !important;
   }
+
+  #latest_content {
+    padding: 0px !important;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -28,14 +32,17 @@
   .banner-area {
     margin-left: 200px !important;
   }
-  .banner {
-    background: image-url('cover.jpg') 40% 0 no-repeat fixed !important; min-height: 650px !important;
- }
 }
 
 @media (max-width: 500px) {
   .banner-area {
     margin-left: 70px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .tumblr-photo {
+    width: 400px;
   }
 }
 
@@ -155,3 +162,5 @@ body {
 .tumblr-media {
   position: relative;
 }
+
+

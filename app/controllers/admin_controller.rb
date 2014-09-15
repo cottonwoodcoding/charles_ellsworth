@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :admin_signed_in?
+  before_action :authenticate_admin!
 
   def mass_signup
       render(:mass_signup, layout: 'no_header')

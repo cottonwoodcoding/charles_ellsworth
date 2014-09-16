@@ -1,6 +1,5 @@
 $ ->
   load_data = ->
-    alert('hello')
     if window.location.pathname == '/' or window.location.pathname == '/home'
       unless window.location.hash == '#latest'
         $.ajax

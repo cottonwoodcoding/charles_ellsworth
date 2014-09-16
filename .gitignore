@@ -20,6 +20,7 @@ log/
 /config/email.yml
 /config/do.yml
 /config/albums.yml
+/config/paypal.yml
 *.key
 /public/assets
 /config/picasa.yml

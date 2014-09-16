@@ -15,9 +15,13 @@ CharlesEllsworth::Application.routes.draw do
   get 'shows', to: 'shows#index'
   get 'admin/mailing_list_emails'
   get 'media/update_photos'
+  get 'media/purchase_confirm'
+  get 'media/purchase_error'
 
   post "mailing_list/signup"
   post 'contact/contact'
   post "shows/add_show"
   post "shows/delete"
+  post "media/purchase"
+  post "media/submit_purchase"
 end

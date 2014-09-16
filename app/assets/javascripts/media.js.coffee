@@ -82,3 +82,34 @@ $ ->
 
   $('.why_donate').on 'click', ->
     $('.why_donate').popover('toggle')
+
+  $('#donation').on 'change', ->
+    donationValue = $(@).val()
+    parsed = parseInt(donationValue)
+    $total = $('#total')
+    if parsed != 'NaN' && parsed >= 0
+      $total.html("Total:  $#{10 + parsed}")
+    else
+      $(@).val('0')
+      $total.html("Total: $10")
+
+  $('.catalog-content form').on 'submit', (e) ->
+    $submitButton = $(@).find('#purchase')
+    $submitButton.attr('disabled', 'disabled')
+    $submitButton.html('Submitting...')
+    e.preventDefault()
+    total = parseInt($('#donation').val()) + 10
+    data = $(@).serializeArray()
+    console.log data
+    data.push({'name' : 'total', 'value' : total})
+    $.ajax '/media/purchase',
+      type: 'POST'
+      data: data
+      success: (data) ->
+        window.location = data
+      error: (data) ->
+        alert 'error'
+        $submitButton.removeAttr('disabled')
+        $submitButton.html('Purchase')
+        console.log data
+

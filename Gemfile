@@ -22,6 +22,7 @@ gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'chronic'
 gem 'picasa'
 gem 'paypal-express'
+gem 'rubyzip'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

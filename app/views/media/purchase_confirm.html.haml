@@ -1,0 +1,24 @@
+%h2.text-center Review Your Purchase
+%h3.text-center.red
+  = "Total: #{number_to_currency(@details.amount.total)}"
+%form#confirm_purchase{method: 'POST', action: '/media/submit_purchase'}
+  #purchase_email.text-center
+    %label{for: 'email'} Email:
+    %input{type: 'email', name: 'email', value: @details.payer.email, required: 'required'}
+  #review_purchase.well.text-center
+    - @track_info.each do |album, tracks|
+      - tracks.each_with_index do |track, index|
+        %ul.no-list-style
+          - if index == 0
+            %h4
+              = album
+          %li
+            = track.humanize.split('.').first
+      %hr
+    = hidden_field_tag :paypal_token, @token
+    = hidden_field_tag :paypal_payer_id, @payer_id
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+  .actions.text-center
+    %p
+      %i Clicking on Confirm Purchase will bill you and send you an email with a download link.
+    %button.btn{type: 'submit'} Confirm Purchase

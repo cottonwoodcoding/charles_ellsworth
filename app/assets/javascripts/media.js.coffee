@@ -113,3 +113,8 @@ $ ->
         $submitButton.html('Purchase')
         console.log data
 
+  $('#confirm_button').click ->
+    $(@).html('Purchasing...')
+    $(@).attr('disabled', 'disabled')
+    $('#confirm_purchase').submit()
+

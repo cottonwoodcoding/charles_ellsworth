@@ -82,12 +82,16 @@ class MediaController < ApplicationController
       end
     rescue => e
       logger.error e
+      flash[:error] = "Your purchase was not successful. Please try again."
+      redirect_to action: :index and return
     end
-    render nothing: true
+    flash[:notice] = 'Your purchase was successful! Please check your email.'
+    redirect_to action: :index
   end
 
   def purchase_error
-    binding.pry
+    flash[:error] = "There was an error with your purchase. Please try again."
+    redirect_to action: :index
   end
 
   private

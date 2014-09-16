@@ -9,5 +9,7 @@
     = csrf_meta_tags
   %body
     %header
-      = render :partial => "layouts/header"
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: name
+    = render :partial => "layouts/header"
     = yield

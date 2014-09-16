@@ -96,3 +96,20 @@
 .red {
   color: red;
 }
+
+.notice {
+  text-align: center;
+  font-size: 18px;
+  background-color: lightgreen;
+  border-radius: 3px;
+  font-family: 'lato-hai';
+}
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  background-color: red;
+  border-radius:  3px;
+  color: white;
+  font-family: 'lato-hai';
+}

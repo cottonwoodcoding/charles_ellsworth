@@ -51,6 +51,15 @@
   .why_donate {
     display: none !important;
   }
+
+  .donate-responsive {
+    display: block !important;
+    background-color: rgba(255, 255, 255, .6);
+  }
+}
+
+.donate-responsive {
+  display: none;
 }
 
 .media-bar {

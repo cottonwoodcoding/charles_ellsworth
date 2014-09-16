@@ -35,6 +35,8 @@ $ ->
       $.ajax '/media/albums',
         type: 'GET'
         success: (data) ->
+          $('#default').parent().remove()
+          $('#album-spinner').addClass('hidden')
           k = _.keys(data)
           first = data[k[0]]
           photos = first.photos
@@ -43,9 +45,6 @@ $ ->
             selected = 'not-selected'
             selected = 'active' if index == 0
             $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{source}'></div>")
-
-          $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{p}'></div>")
-
 
           $(".carousel").carousel interval: 4000
 
@@ -63,6 +62,7 @@ $ ->
             $('#photo_album_list').append("<li><a id='#{id}' class='album-link' href='#'>>> #{name}</a></li>")
 
   $(document).on 'click', '.album-link', (e) ->
+    $('#album-spinner').removeClass('hidden')
     $('.carousel-control').addClass('hidden')
     e.preventDefault()
     el = $(@)
@@ -71,6 +71,7 @@ $ ->
       data:
         id: el.attr('id')
       success: (data) ->
+        $('#album-spinner').addClass('hidden')
         $('.carousel').carousel('pause').removeData()
         $('#photo-carousel #inner').empty()
         for p, index in data.photos
@@ -79,6 +80,7 @@ $ ->
           $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{p}'></div>")
         $('.carousel').carousel interval: 4000
         $('.carousel-control').removeClass('hidden')
+        $('#default').remove
 
   $('.why_donate').on 'click', ->
     $('.why_donate').popover('toggle')

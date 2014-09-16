@@ -8,11 +8,11 @@ $ ->
           success: (data) ->
             if data == 'not signed up'
               $('#registration_modal').modal 'show'
-     $.ajax '/home/update_latest',
-       type: 'GET'
-       success: (data) ->
-         $('.latest-content').append(data)
-         $('.spinner').remove()
+      $.ajax '/home/update_latest',
+        type: 'GET'
+        success: (data) ->
+          $('.latest-content').append(data)
+          $('.spinner').remove()
 
 
   init = load_data()

@@ -42,6 +42,7 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
     arel (4.0.2)
+    attr_required (1.0.0)
     autoprefixer-rails (3.0.1.20140826)
       execjs
     bcrypt (3.1.7)
@@ -117,8 +118,13 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
+    netrc (0.7.7)
     oauth (0.4.7)
     orm_adapter (0.5.0)
+    paypal-express (0.6.0)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      restclient_with_cert
     pg (0.17.1)
     picasa (0.7.2)
       httparty
@@ -155,6 +161,11 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    restclient_with_cert (0.0.8)
+      rest-client (>= 1.6)
     rmagick (2.13.3)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
@@ -252,6 +263,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   momentjs-rails (>= 2.8.1)!
+  paypal-express
   pg
   picasa
   protected_attributes

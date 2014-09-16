@@ -21,6 +21,7 @@ gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'chronic'
 gem 'picasa'
+gem 'paypal-express'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

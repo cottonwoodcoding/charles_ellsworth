@@ -60,6 +60,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.8.9)
+    curb (0.8.5)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -256,6 +257,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   chronic
   coffee-rails (~> 4.0.0)
+  curb
   datetimepicker-rails!
   debugger
   devise

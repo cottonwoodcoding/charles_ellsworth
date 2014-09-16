@@ -76,37 +76,14 @@ class MediaController < ApplicationController
         :amount        => details.amount.total)
       payment_response = paypal_request.checkout!(token, params[:paypal_payer_id], payment_request)
 
+      session["purchasing"].merge!({email: params['email']})
       if payment_response.ack == 'Success'
-        album_info = Hash.new{ |key, value| key[value] = []}
-        session['purchasing'].each do |track_info, _|
-          info = track_info.split('~')
-          album_info[info.first] << info.last
-        end
-        zip = nil
-        Dir.mktmpdir do
-          zip_file = Zip::File.open("ChralesEllsworth-Collection.zip", Zip::File::CREATE) do |zipfile|
-            album_info.each do |album, songs|
-              Dir.mkdir(album) unless Dir.exists?(album)
-              Dir.open(album) do |dir|
-                songs.each do |song|
-                  open("#{dir.path}/#{song}", 'wb') do |file|
-                   file << open("http://#{ENV['DIGITAL_OCEAN_IP']}/#{song}").read
-                  end
-                end
-              end
-            end
-          end
-          zip = zip_file
-        end
-        binding.pry
-        render send_file(zip) and return
-      else
-        raise 'payment failed'
+        Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}:3001/music/create_download_file", session['purchasing'])
       end
     rescue => e
-      logger.info e
-      # log error and do a flash message or something.
+      logger.error e
     end
+    render nothing: true
   end
 
   def purchase_error

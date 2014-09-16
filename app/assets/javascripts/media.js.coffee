@@ -79,3 +79,6 @@ $ ->
           $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{p}'></div>")
         $('.carousel').carousel interval: 4000
         $('.carousel-control').removeClass('hidden')
+
+  $('.why_donate').on 'click', ->
+    $('.why_donate').popover('toggle')

@@ -33,9 +33,13 @@
                             %label
                               %input.lato{"checked" => "checked", type: 'checkbox', name: "#{a['NAME']}~#{t['FILENAME']}"}
                               = t['NAME']
-              %label{for: 'donation'} Donation Amt: $
-              %input#donation{type: 'number', 'min' => '0', 'step' => '1', value: '0'}
-              = fa_icon 'question-circle'
+              .row
+                .donate
+                  %label{for: 'donation'} Donation Amt: $
+                  %input#donation{type: 'number', 'min' => '0', 'step' => '1', value: '0'}
+                .why_donate{'data-toggle' => 'popover', 'data-title' => 'Donations Help!', 'data-content' => 'Donations will be used to produce new material and book more tour dates', 'data-placement' => 'right'}
+                  Why Donate
+                  %i.fa.fa-question-circle
               %br
               %h3#total.center TOTAL: $10
               %button#purchase.btn.btn-default{type: 'button'} Purchase

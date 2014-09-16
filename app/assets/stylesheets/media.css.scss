@@ -132,7 +132,6 @@
 
 .catalog {
   position: relative;
-  max-height: 550px;
   max-width: 375px;
   background-color: rgba(255,255, 255, .4);
   margin-right: 2%;
@@ -188,4 +187,13 @@
   li a {
     color: black;
   }
+}
+
+#total {
+  background-color: rgba(255, 255, 255, .9);
+  border-radius: 2px;
+}
+
+#donation {
+  max-width: 50px;
 }

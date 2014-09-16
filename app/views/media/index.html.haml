@@ -20,7 +20,7 @@
           %h2.center.lato Entire Catalog $10
           %h4 For a limited time only get Charles Ellsworth's entire catalog of over 30 songs including never released music for only $10
           .catalog-content
-            %form{method: 'POST', action: 'media/purchase'}
+            %form{role: 'form', method: 'POST', action: '/media/purchase'}
               .catalog-body
                 %ul.list-unstyled.album-content
                   - @albums['ALBUMS'].each do |a|
@@ -31,9 +31,14 @@
                         - a['TRACKS'].each do |t|
                           .checkbox
                             %label
-                              %input.lato{"checked" => "checked", type: 'checkbox', name: t['FILENAME']}
+                              %input.lato{"checked" => "checked", type: 'checkbox', name: "#{a['NAME']}~#{t['FILENAME']}"}
                               = t['NAME']
-              %button#purchase.btn.btn-default{type: 'Submit'} Purchase
+              %label{for: 'donation'} Donation Amt: $
+              %input#donation{type: 'number', 'min' => '0', 'step' => '1', value: '0'}
+              = fa_icon 'question-circle'
+              %br
+              %h3#total.center TOTAL: $10
+              %button#purchase.btn.btn-default{type: 'button'} Purchase
         .album-art.col-md-2.hidden-xs
           - art = @albums['ALBUMS'].first['ART']
           - file = File.exists?("#{Rails.root}/app/assets/images/album_art/#{art}") ? art : "no_album_art.jpeg"

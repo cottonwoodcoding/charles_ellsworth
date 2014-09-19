@@ -24,6 +24,10 @@ gem 'picasa'
 gem 'paypal-express'
 gem 'rubyzip'
 gem 'curb'
+gem 'rack-cache'
+gem 'dalli'
+gem 'kgio'
+gem "memcachier"
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
@@ -43,6 +47,7 @@ gem 'jbuilder', '~> 1.2'
 ruby '2.0.0'
 
 group :production do
+  gem 'heroku-deflater'
   gem 'pg'
   gem 'unicorn'
 end

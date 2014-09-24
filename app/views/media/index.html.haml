@@ -90,14 +90,15 @@
                 %ul#player_playlist.sm2-playlist-bd
                   - @albums['ALBUMS'].each do |a|
                     - a['TRACKS'].each_with_index do |t, i|
-                      - selected = i == 0 ? 'selected' : 'not-selected'
-                      %li{class: selected}
-                        %a.track{href: "http://#{ENV['DIGITAL_OCEAN_IP']}/#{t['FILENAME']}", 'data-album-art' => a['ART']}
-                          %b
-                            = a["NAME"]
-                          = " - #{t["NAME"]}"
-                          - if t["EXPLICIT"]
-                            %span.label Explicit
+                      - unless t['STREAM'].blank?
+                        - selected = i == 0 ? 'selected' : 'not-selected'
+                        %li{class: selected}
+                          %a.track{href: "http://#{ENV['DIGITAL_OCEAN_IP']}/#{t['FILENAME']}", 'data-album-art' => a['ART']}
+                            %b
+                              = a["NAME"]
+                            = " - #{t["NAME"]}"
+                            - if t["EXPLICIT"]
+                              %span.label Explicit
               .sm2-extra-controls
                 .bd
                   .sm2-inline-element.sm2-button-element
@@ -123,7 +124,7 @@
               %span.glyphicon.glyphicon-chevron-right
       .photo-albums.col-md-2
         .photo-album-container
-          %h3 Alubms
+          %h3 Albums
           %hr
           %ul#photo_album_list.list-unstyled
             %li#album-spinner

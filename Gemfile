@@ -13,7 +13,7 @@ gem 'devise'
 gem 'underscore-rails'
 gem 'protected_attributes'
 gem 'tumblr_client'
-gem 'twitter'
+gem 'twitter', '~> 5.11.0'
 gem 'soundmanager-rails'
 gem 'simple_form'
 gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
@@ -29,6 +29,7 @@ gem 'dalli'
 gem 'kgio'
 gem "memcachier"
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'simple_oauth', '~> 0.2.0'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

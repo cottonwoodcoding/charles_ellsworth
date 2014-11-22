@@ -18,7 +18,7 @@ class AdminController < ApplicationController
       end
     end
     track_info_hash.merge!(email: params[:email])
-    Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}:3001/music/create_download_file", track_info_hash)
+    Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", track_info_hash)
     flash[:notice] = 'Email Link Has Been Sent'
     redirect_to controller: :home, action: :index
   end

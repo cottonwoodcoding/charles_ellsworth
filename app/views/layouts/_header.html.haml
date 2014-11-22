@@ -36,7 +36,9 @@
             %li
               - if admin_signed_in?
                 = link_to 'Mass Signup', '/admin/mass_signup'
-                = link_to 'Email List', 'admin/mailing_list_emails'
+                %a{href: '#', "data-target" => "#email_modal", "data-toggle" => "modal", :type => "button"}
+                  Music Catalog Email
+                = link_to 'Email List', '/admin/mailing_list_emails'
                 = link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'delete'
               - else
                 = link_to 'Sign In', new_admin_session_path, method: :get
@@ -44,3 +46,4 @@
           = render(partial: 'layouts/social_media_links', locals: {id: 'no-follow', classes: 'visible-xs visible-s'})
 %hr
 = render partial: 'layouts/register_modal'
+= render partial: 'layouts/email_modal'

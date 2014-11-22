@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: 21c2aebb917eba0c5d686749ee6754c769533402
+  revision: d0f8a68f30d7ffb34e505845a693df27467424f3
   branch: master
   submodules: true
   specs:
@@ -52,9 +52,9 @@ GEM
     addressable (2.3.6)
     arel (4.0.2)
     attr_required (1.0.0)
-    autoprefixer-rails (3.0.1.20140826)
+    autoprefixer-rails (4.0.1)
       execjs
-    bcrypt (3.1.7)
+    bcrypt (3.1.9)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     buftok (0.2.0)
@@ -69,24 +69,25 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.8.9)
-    curb (0.8.5)
+    curb (0.8.6)
     dalli (2.7.2)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
       debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
-    devise (3.3.0)
+    debugger-ruby_core_source (1.3.7)
+    devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     equalizer (0.0.9)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -103,10 +104,10 @@ GEM
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
-    http (0.6.2)
+    http (0.6.3)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
-    httparty (0.13.1)
+    httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
@@ -118,7 +119,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
-    libv8 (3.16.14.5)
+    libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -132,13 +133,13 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    netrc (0.7.7)
+    netrc (0.8.0)
     oauth (0.4.7)
     orm_adapter (0.5.0)
-    paypal-express (0.6.0)
+    paypal-express (0.7.1)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
-      restclient_with_cert
+      rest-client
     pg (0.17.1)
     picasa (0.7.2)
       httparty
@@ -162,7 +163,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.3)
       sprockets-rails (~> 2.0.0)
-    rails_12factor (0.0.2)
+    rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
@@ -177,11 +178,11 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    restclient_with_cert (0.0.8)
-      rest-client (>= 1.6)
     rmagick (2.13.3)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
@@ -201,10 +202,10 @@ GEM
     rspec-support (3.0.4)
     rubyzip (1.1.6)
     sass (3.2.19)
-    sass-rails (4.0.3)
+    sass-rails (4.0.4)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
@@ -212,10 +213,10 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simple_oauth (0.2.0)
+    simple_oauth (0.3.0)
     slop (3.6.0)
     soundmanager-rails (1.0.1)
-    sprockets (2.11.0)
+    sprockets (2.11.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -224,7 +225,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.9)
+    sqlite3 (1.3.10)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -241,7 +242,7 @@ GEM
       mime-types
       oauth
       simple_oauth
-    twitter (5.11.0)
+    twitter (5.13.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
       equalizer (~> 0.0.9)
@@ -251,8 +252,8 @@ GEM
       json (~> 1.8)
       memoizable (~> 0.4.0)
       naught (~> 1.0)
-      simple_oauth (~> 0.2.0)
-    tzinfo (0.3.41)
+      simple_oauth (~> 0.3.0)
+    tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)

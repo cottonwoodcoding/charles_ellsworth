@@ -18,6 +18,7 @@ CharlesEllsworth::Application.routes.draw do
   get 'media/purchase_confirm'
   get 'media/purchase_error'
 
+  post '/admin/download_link'
   post "mailing_list/signup"
   post 'contact/contact'
   post "shows/add_show"

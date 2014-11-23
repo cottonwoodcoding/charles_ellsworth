@@ -72,7 +72,7 @@ class MediaController < ApplicationController
 
       session["purchasing"].merge!({email: params['email']})
       if payment_response.ack == 'Success'
-        Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}:3001/music/create_download_file", session['purchasing'])
+        Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", session['purchasing'])
       end
     rescue => e
       logger.error e

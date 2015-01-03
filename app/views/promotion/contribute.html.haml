@@ -15,7 +15,8 @@
   %span.money-label.label.label-success.pointer.other_donation Other
 %hr
 %h2.underline.text-center Albums
-- @albums['ALBUMS'].each do |a|
+- @albums['ALBUMS'].each_with_index do |a, i|
+  - i += 1
   %div.col-sm-4.text-center
     %h4.lato.album-title
       = a['NAME']
@@ -25,5 +26,5 @@
       - a['TRACKS'].each do |t|
         %div
           = t['NAME']
-
-
+  - if i % 3 == 0
+    .clearfix

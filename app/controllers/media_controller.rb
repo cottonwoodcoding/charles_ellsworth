@@ -7,18 +7,19 @@ class MediaController < ApplicationController
   end
 
   def albums
-    client = Picasa::Client.new(user_id: ENV['PICASA_USERNAME'],
-                                password: ENV['PICASA_PASSWORD'])
-    @photo_data = {}
-    client.album.list.albums.each do |a|
-      album = client.album.show(a.id)
-      name = album.name
-      photos = album.photos
-      @photo_data[a.id] = {name: name, photos: photos}
-    end
-    respond_to do |format|
-      format.json { render json: @photo_data.to_json }
-    end
+    # client = Picasa::Client.new(user_id: ENV['PICASA_USERNAME'],
+    #                             password: ENV['PICASA_PASSWORD'])
+    # @photo_data = {}
+    # client.album.list.albums.each do |a|
+    #   album = client.album.show(a.id)
+    #   name = album.name
+    #   photos = album.photos
+    #   @photo_data[a.id] = {name: name, photos: photos}
+    # end
+    # respond_to do |format|
+    #   format.json { render json: @photo_data.to_json }
+    # end
+    render nothing: true
   end
 
   def update_photos
@@ -32,11 +33,8 @@ class MediaController < ApplicationController
   end
 
   def purchase
-    purchasing = params['tracks'].delete_if { |_, value| value == 'off' }
-    session['purchasing'] = purchasing
-
     payment_request = Paypal::Payment::Request.new(
-      :description   => 'Charles Ellsworth Promotion Collection', # item description
+      :description   => 'Charles Ellsworth Master Collection', # item description
       :quantity      => 1, # item quantity
       :amount        => params[:total]
     )
@@ -50,14 +48,10 @@ class MediaController < ApplicationController
   end
 
   def purchase_confirm
+    @albums = JSON.parse(ENV['ALBUMS'])
     @token = params[:token]
     @payer_id = params[:PayerID]
     @details = paypal_request.details(@token)
-    @track_info = Hash.new{ |key, value| key[value] = [] }
-    session['purchasing'].each do |track_info, _|
-      info = track_info.split('~')
-      @track_info[info.first] << info.last
-    end
   end
 
   def submit_purchase
@@ -70,9 +64,8 @@ class MediaController < ApplicationController
         :amount        => details.amount.total)
       payment_response = paypal_request.checkout!(token, params[:paypal_payer_id], payment_request)
 
-      session["purchasing"].merge!({email: params['email']})
       if payment_response.ack == 'Success'
-        Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", session['purchasing'])
+        Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: params['email']})
       end
     rescue => e
       logger.error e

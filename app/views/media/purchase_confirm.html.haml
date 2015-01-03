@@ -6,14 +6,14 @@
     %label{for: 'email'} Email:
     %input{type: 'email', name: 'email', value: @details.payer.email, required: 'required'}
   #review_purchase.well.text-center.scrollable
-    - @track_info.each do |album, tracks|
-      - tracks.each_with_index do |track, index|
-        %ul.no-list-style
-          - if index == 0
-            %h4
-              = album
-          %li
-            = track.humanize.split('.').first
+    - @albums['ALBUMS'].each do |a|
+      %div
+        %h4.lato.album-title
+          = a['NAME']
+        %div
+          - a['TRACKS'].each do |t|
+            %div
+              = t['NAME']
       %hr
     = hidden_field_tag :paypal_token, @token
     = hidden_field_tag :paypal_payer_id, @payer_id

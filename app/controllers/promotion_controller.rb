@@ -60,7 +60,6 @@ class PromotionController < ApplicationController
         :quantity      => 1,      # item quantity
         :amount        => details.amount.total)
       payment_response = paypal_request.checkout!(token, params[:PayerID], payment_request)
-      binding.pry
       if payment_response.ack == 'Success' && details.amount.total >= 10
         Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: details.payer.email})
       end

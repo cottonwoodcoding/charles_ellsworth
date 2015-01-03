@@ -23,4 +23,11 @@ class PromotionController < ApplicationController
     video.save
     redirect_to not_a_kickstarter_path
   end
+
+  def donation
+    @albums = JSON.parse(ENV['ALBUMS'])
+  end
+
+  def update_contribution_text
+  end
 end

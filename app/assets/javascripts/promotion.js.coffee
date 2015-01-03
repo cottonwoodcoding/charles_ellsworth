@@ -19,5 +19,17 @@ $ ->
     $('.promo-intro').replaceWith ->
       '<input class="center header-input" type="text" maxlength="255" /><button class="btn btn-primary">Save</button>'
 
+  $('.contribution_edit').click ->
+    $(@).replaceWith ->
+      "<div class='text-center'><input id='contribution_edit_area' type='text' value='#{$(@).text()}'></input></div>"
+
+  $(document).on 'keyup', '#contribution_edit_area', (e) ->
+    if e.keyCode == 13
+      $.ajax '/update_contribution_text',
+        type: 'POST'
+        data: {'description' : $(@).val()}
+        success: (data) ->
+        error: (data) ->
+          alert('Error updating contribution description')
 
 

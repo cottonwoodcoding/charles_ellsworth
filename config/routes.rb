@@ -17,6 +17,7 @@ CharlesEllsworth::Application.routes.draw do
   get 'media/update_photos'
   get 'media/purchase_confirm'
   get 'media/purchase_error'
+  get 'not_a_kickstarter', to: 'promotion#index'
 
   post '/admin/download_link'
   post "mailing_list/signup"
@@ -25,4 +26,5 @@ CharlesEllsworth::Application.routes.draw do
   post "shows/delete"
   post "media/purchase"
   post "media/submit_purchase"
+  post "/add_video", to: 'promotion#add_video'
 end

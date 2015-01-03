@@ -1,0 +1,57 @@
+%h1.center Welcome To My NotAKickStarter Page
+%h4.center.promo-intro BLAH BLAH BLAH BLAH
+.main-video-section
+  - if @first_main
+    - key = @first_main.url.split("/").last
+  - else
+    - key = 'unknown'
+  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  %p.main-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = @first_main.description unless @first_main.blank?
+  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
+    - if @main_videos.any?
+      - @main_videos.each do |vid|
+        - key = vid.url.split("/").last
+        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
+    - if admin_signed_in?
+      .add-main-video.add-video.pointer
+        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
+.clearfix
+%hr
+.vlog-section
+  - if @first_vlog
+    - key = @first_vlog.url.split("/").last
+  - else
+    - key = 'unknown'
+  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  %p.vlog-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = @first_vlog.description unless @first_vlog.blank?
+  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
+    - if @vlog_videos.any?
+      - @vlog_videos.each do |vid|
+        - key = vid.url.split("/").last
+        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
+    - if admin_signed_in?
+      .add-vlog-video.add-video.pointer
+        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
+.clearfix
+%hr
+.live-section
+  - if @first_live
+    - key = @first_live.url.split("/").last
+  - else
+    - key = 'unknown'
+  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  %p.live-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = @first_live.description unless @first_live.blank?
+  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
+    - if @live_videos.any?
+      - @live_videos.each do |vid|
+        - key = vid.url.split("/").last
+        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
+    - if admin_signed_in?
+      .add-live-video.add-video.pointer
+        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
+%hr
+%h4.center.footer-text
+= render partial: '/layouts/add_video'

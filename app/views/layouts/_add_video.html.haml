@@ -1,0 +1,20 @@
+#add_videos_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h2 Add a video
+        %form#video_form{type: 'form', action: '/add_video', method: 'post'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          .form-group
+            %select#video_type.form-control{name: 'type'}
+              %option.mv{value: 'main'} Main
+              %option.vv{value: 'vlog'} Vlog
+              %option.lv{value: 'live'} Live
+          .form-group
+            %input#video_url.form-control{name: 'url', placeholder: "youtube.com/id", type: 'text', 'required' => 'true'}
+          .form-group
+            %textarea#video_description.form-control{name: 'description', cols: "3"}
+          .modal-footer
+            .pull-right
+              %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+              %button.btn.btn-primary{type: 'submit'} Submit

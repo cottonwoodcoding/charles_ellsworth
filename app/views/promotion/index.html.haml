@@ -1,12 +1,14 @@
 %h1.center Welcome To My NotAKickStarter Page
-- if PromotionText.first
-  - header_text = PromotionText.first.header_content || 'Click to add text'
-  - footer_text = PromotionText.first.footer_content || 'Click to add text'
-- else
-  - header_text = 'Click to add text'
-  - footer_text = 'Click to add text'
-%h4.center.promo-intro
-  = header_text
+- if admin_signed_in?
+  - header_admin_class = 'pointer header-edit'
+  - footer_admin_class = 'pointer footer-edit'
+%h4.center.promo-intro{class: header_admin_class}
+  = @header_text
+  - if header_admin_class
+    %span.glyphicon.glyphicon-edit
+.button-container.center
+  = link_to donation_path, 'Get Involved', class: 'btn btn-inverse'
+%hr
 .main-video-section
   - if @first_main
     - key = @first_main.url.split("/").last
@@ -61,6 +63,8 @@
         = fa_icon 'plus', text: 'Add Video', class: 'pointer'
 .clearfix
 %hr
-%h4.center.footer-text
-  = footer_text
+%h4.center.footer-text{class: footer_admin_class}
+  = @footer_text
+  - if footer_admin_class
+    %span.glyphicon.glyphicon-edit
 = render partial: '/layouts/add_video'

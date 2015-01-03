@@ -6,6 +6,8 @@ class PromotionController < ApplicationController
     @first_vlog = Video.where(category: 'vlog', priority: 1).first
     @live_videos = Video.where(category: 'live').order('priority')
     @first_live = Video.where(category: 'live', priority: 1).first
+    @header_text = PromotionText.first.header_content
+    @footer_text = PromotionText.first.footer_content
   end
 
   def add_video
@@ -36,5 +38,19 @@ class PromotionController < ApplicationController
 
   def send_contribution
     binding.pry
+  end
+
+  def update_header
+    f = PromotionText.first
+    f.header_content = params['header_text']
+    f.save
+    render nothing: true
+  end
+
+  def update_footer
+    f = PromotionText.first
+    f.footer_content = params['footer_text']
+    f.save
+    render nothing: true
   end
 end

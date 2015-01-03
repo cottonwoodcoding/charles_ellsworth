@@ -15,9 +15,10 @@ $ ->
     desc.text($(@).attr('data-description'))
     frame[0].contentWindow.location.href = "https://www.youtube.com/embed/#{key}"
 
-  $('.promo-intro').on 'click', (e) ->
-    $('.promo-intro').replaceWith ->
-      '<input class="center header-input" type="text" maxlength="255" /><button class="btn btn-primary">Save</button>'
+  $('.header-edit').on 'click', (e) ->
+    content = $(@).text().trim()
+    $('.header-edit').replaceWith ->
+      "<div class='text-center'><input id='header_edit_area' class='edit-div' type='text' value='#{$(@).text().trim()}'></input></div>"
 
   $('.contribution_edit').click ->
     $(@).replaceWith ->
@@ -38,4 +39,27 @@ $ ->
         error: (data) ->
           alert('Error updating contribution description')
 
+  $('.footer-edit').on 'click', (e) ->
+    content = $(@).text().trim()
+    $('.footer-edit').replaceWith ->
+      "<div class='text-center edit-div'><input id='footer_edit_area' class='edit-div' type='text' value='#{$(@).text().trim()}'></input></div>"
 
+   $(document).on 'keyup', '#header_edit_area', (e) ->
+    if e.keyCode == 13
+      $.ajax '/update_header_text',
+        type: 'POST'
+        data: {'header_text' : $(@).val()}
+        success: (data) ->
+          window.location.reload()
+        error: (data) ->
+          alert('Error updating header description')
+
+   $(document).on 'keyup', '#footer_edit_area', (e) ->
+    if e.keyCode == 13
+      $.ajax '/update_footer_text',
+        type: 'POST'
+        data: {'footer_text' : $(@).val()}
+        success: (data) ->
+          window.location.reload()
+        error: (data) ->
+          alert('Error updating header description')

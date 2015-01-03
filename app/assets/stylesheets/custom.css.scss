@@ -125,3 +125,12 @@
 .pointer {
   cursor: pointer;
 }
+
+.btn-inverse {
+  background-color: black;
+  color: white;
+}
+
+.btn-inverse:hover {
+  color: white !important;
+}

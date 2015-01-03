@@ -30,4 +30,6 @@ CharlesEllsworth::Application.routes.draw do
   post "/add_video", to: 'promotion#add_video'
   post '/update_contribution_text', to: 'promotion#update_contribution_text'
   post '/send_contribution', to: 'promotion#send_contribution'
+  post "/update_header_text", to: 'promotion#update_header'
+  post "/update_footer_text", to: 'promotion#update_footer'
 end

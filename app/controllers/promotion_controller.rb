@@ -60,8 +60,8 @@ class PromotionController < ApplicationController
         :quantity      => 1,      # item quantity
         :amount        => details.amount.total)
       payment_response = paypal_request.checkout!(token, params[:PayerID], payment_request)
-
-      if payment_response.ack == 'Success'
+      binding.pry
+      if payment_response.ack == 'Success' && details.amount.total >= 10
         Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: details.payer.email})
       end
     rescue => e
@@ -69,7 +69,7 @@ class PromotionController < ApplicationController
       flash[:error] = "Your contribution was not successful. Please try again."
       redirect_to action: :contribute and return
     end
-    flash[:notice] = 'Your contribution was successful! Please check your paypal email address if your donation amount was over 10 dollars.'
+    flash[:notice] = 'Your contribution was successful! Please check your paypal email address if your contribution amount was over 10 dollars.'
     redirect_to action: :contribute
   end
 

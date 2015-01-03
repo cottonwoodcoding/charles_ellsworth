@@ -21,14 +21,20 @@ $ ->
 
   $('.contribution_edit').click ->
     $(@).replaceWith ->
-      "<div class='text-center'><input id='contribution_edit_area' type='text' value='#{$(@).text()}'></input></div>"
+      "<div class='text-center'><input id='contribution_edit_area' type='text' value='#{$(@).text().trim()}'></input></div>"
+
+  $('.donation_label').click ->
+    $contributionForm = $('#contribution_form')
+    $contributionForm.find('input').val($(@).attr('value'))
+    $contributionForm.submit()
 
   $(document).on 'keyup', '#contribution_edit_area', (e) ->
     if e.keyCode == 13
       $.ajax '/update_contribution_text',
         type: 'POST'
-        data: {'description' : $(@).val()}
+        data: {'contribution_text' : $(@).val()}
         success: (data) ->
+          window.location.reload()
         error: (data) ->
           alert('Error updating contribution description')
 

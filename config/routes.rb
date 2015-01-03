@@ -29,4 +29,5 @@ CharlesEllsworth::Application.routes.draw do
   post "media/submit_purchase"
   post "/add_video", to: 'promotion#add_video'
   post '/update_contribution_text', to: 'promotion#update_contribution_text'
+  post '/contribute', to: 'promotion#contribute'
 end

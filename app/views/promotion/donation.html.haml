@@ -1,16 +1,29 @@
 - if admin_signed_in?
   - admin_class = 'pointer contribution_edit'
 #contribution_description.text-center{class: admin_class}
+<<<<<<< HEAD
   BLAH  BLAH BLAH
+=======
+  = @contribution_text
+>>>>>>> contribution content
   - if admin_class
     %span.glyphicon.glyphicon-edit
 %hr
 #donation_container.text-center
   %h2.underline Contribute Here
+<<<<<<< HEAD
   %span.label.label-success.donation-label.pointer $10
   %span.label.label-success.donation-label.pointer $25
   %span.label.label-success.donation-label.pointer $50
   %span.label.label-success.donation-label.pointer Other
+=======
+  %form#contribution_form.hide{method: '/contribute', type: 'post'}
+    %input{type: 'hidden', name: 'contribution_amount'}
+  %span.money-label.donation_label.label.label-success.pointer{value: '10'} $10
+  %span.money-label.donation_label.label.label-success.pointer{value: '25'} $25
+  %span.money-label.donation_label.label.label-success.pointer{value: '50'} $50
+  %span.money-label.label.label-success.pointer.other_donation Other
+>>>>>>> contribution content
 %hr
 %h2.underline.text-center Albums
 - @albums['ALBUMS'].each do |a|

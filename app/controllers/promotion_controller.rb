@@ -25,9 +25,16 @@ class PromotionController < ApplicationController
   end
 
   def donation
+    @contribution_text = PromotionText.first.contribution_text
     @albums = JSON.parse(ENV['ALBUMS'])
   end
 
   def update_contribution_text
+    PromotionText.first.update_attributes!(contribution_text: params[:contribution_text])
+    render nothing: true
+  end
+
+  def contribute
+    binding.pry
   end
 end

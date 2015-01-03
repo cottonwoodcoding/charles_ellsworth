@@ -1,6 +1,6 @@
 .blog-content.col-md-6.col-sm-12.col-xs-12
   .title.lato Blog
-  #tumblr.posts.scrollable
+  #tumblr.posts.scroll
     - @recent_posts.each do |post|
       - caption = post['caption']
       - if caption.present?
@@ -15,13 +15,16 @@
           .outer-frame.embed-responsive.embed-responsive-4by3
             %iframe.tumblr-frame.embed-responsive-item{src: post['player'][1]['embed_code'].split('src=').last.split("width").first.gsub("\"",'').strip, width: '500', height: '500', frameborder: '0', scrolling: 'no'}
         - when 'photo'
-          - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 500 }.first
+          - if @width.to_i >= 500
+            - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 500 }.first
+          - else
+            - photo = post['photos'].first['alt_sizes'].select { |key| key['width'] == 250 }.first
           %img.tumblr-photo{src: photo['url']}
         - else
           Other
       %br
       %br
-.twitter-content.col-md-6.col-sm-12.scrollable
+.twitter-content.col-md-6.col-sm-12.scroll
   .twitter-header.lato.title
     = fa_icon 'twitter 2x', text: 'Twitter'
   #twitter.posts.scrollable

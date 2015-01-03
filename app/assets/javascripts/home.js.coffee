@@ -8,8 +8,12 @@ $ ->
           success: (data) ->
             if data == 'not signed up'
               $('#registration_modal').modal 'show'
+
+      width = $(window).width()
       $.ajax '/home/update_latest',
         type: 'GET'
+        data:
+          width: width
         success: (data) ->
           $('.latest-content').append(data)
           $('.spinner').remove()

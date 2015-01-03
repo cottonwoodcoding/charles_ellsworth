@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def update_latest
+    @width = params['width']
     tumblr = File.expand_path(File.dirname(__FILE__) + '../../../config/tumblr.yml')
 
     if File.exists? tumblr

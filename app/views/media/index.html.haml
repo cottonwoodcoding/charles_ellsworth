@@ -32,7 +32,6 @@
                         - a['TRACKS'].each do |t|
                           .checkbox
                             %label
-                              %input.lato{"checked" => "checked", type: 'checkbox', name: "[tracks]#{a['NAME']}~#{t['FILENAME']}"}
                               = t['NAME']
               %hr
               .row

@@ -19,6 +19,7 @@ CharlesEllsworth::Application.routes.draw do
   get 'media/purchase_error'
   get 'not_a_kickstarter', to: 'promotion#index'
   get 'contribute', to: 'promotion#contribute'
+  get 'accept_contribution', to: 'promotion#accept_contribution'
 
   post '/admin/download_link'
   post "mailing_list/signup"

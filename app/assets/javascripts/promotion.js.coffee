@@ -25,8 +25,10 @@ $ ->
       "<div class='text-center'><input id='contribution_edit_area' type='text' value='#{$(@).text().trim()}'></input></div>"
 
   $('.donation_label').click ->
+    $('.contribution_actions').hide()
+    $('.contribution_redirect_message').removeClass('hide')
     $contributionForm = $('#contribution_form')
-    $contributionForm.find('input').val($(@).attr('value'))
+    $contributionForm.find('#contribution_amount').val($(@).attr('value'))
     $contributionForm.submit()
 
   $(document).on 'keyup', '#contribution_edit_area', (e) ->
@@ -63,3 +65,6 @@ $ ->
           window.location.reload()
         error: (data) ->
           alert('Error updating header description')
+
+  $('.other_contribution').click ->
+    $('#other_contribution_modal').modal('show')

@@ -1,20 +1,24 @@
 - if admin_signed_in?
   - admin_class = 'pointer contribution_edit'
-#contribution_description.text-center{class: admin_class}
+%h2#contribution_description.text-center{class: admin_class}
   = @contribution_text
   - if admin_class
     %span.glyphicon.glyphicon-edit
 %hr
-#donation_container.text-center
-  %h2.underline Contribute Here
-  %form#contribution_form.hide{method: '/send_contribution', type: 'post'}
-    %input{type: 'hidden', name: 'contribution_amount'}
-  %span.money-label.donation_label.label.label-success.pointer{value: '10'} $10
-  %span.money-label.donation_label.label.label-success.pointer{value: '25'} $25
-  %span.money-label.donation_label.label.label-success.pointer{value: '50'} $50
-  %span.money-label.label.label-success.pointer.other_donation Other
+#contribution_container.text-center
+  %h3.underline Contribute Here
+  .contribution_actions
+    %form#contribution_form.hide{action: '/send_contribution', method: 'post'}
+      %input#contribution_amount{type: 'hidden', name: 'contribution_amount'}
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+    %span.money-label.donation_label.label.label-success.pointer{value: '10'} $10
+    %span.money-label.donation_label.label.label-success.pointer{value: '25'} $25
+    %span.money-label.donation_label.label.label-success.pointer{value: '50'} $50
+    %span.money-label.label.label-success.pointer.other_contribution Other
+  %h3.contribution_redirect_message.hide.text-success
+    Redirecting You To Paypal, Please Wait...
 %hr
-%h2.underline.text-center Albums
+%h3.underline.text-center Albums
 - @albums['ALBUMS'].each_with_index do |a, i|
   - i += 1
   %div.col-sm-4.text-center
@@ -28,3 +32,4 @@
           = t['NAME']
   - if i % 3 == 0
     .clearfix
+= render(partial: 'other_contribution_modal')

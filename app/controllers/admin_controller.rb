@@ -10,15 +10,7 @@ class AdminController < ApplicationController
   end
 
   def download_link
-    albums = JSON.parse(ENV['ALBUMS'])
-    track_info_hash = {}
-    albums['ALBUMS'].each do |album|
-      album['TRACKS'].each do |track|
-        track_info_hash["#{album['NAME']}~#{track['FILENAME']}"] = 'on'
-      end
-    end
-    track_info_hash.merge!(email: params[:email])
-    Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", track_info_hash)
+    Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: params[:email]})
     flash[:notice] = 'Email Link Has Been Sent'
     redirect_to controller: :home, action: :index
   end

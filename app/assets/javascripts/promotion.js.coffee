@@ -15,4 +15,9 @@ $ ->
     desc.text($(@).attr('data-description'))
     frame[0].contentWindow.location.href = "https://www.youtube.com/embed/#{key}"
 
+  $('.promo-intro').on 'click', (e) ->
+    $('.promo-intro').replaceWith ->
+      '<input class="center header-input" type="text" maxlength="255" /><button class="btn btn-primary">Save</button>'
+
+
 

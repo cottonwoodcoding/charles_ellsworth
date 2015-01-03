@@ -24,7 +24,7 @@ class PromotionController < ApplicationController
     redirect_to not_a_kickstarter_path
   end
 
-  def donation
+  def contribute
     @contribution_text = PromotionText.first.contribution_text
     @albums = JSON.parse(ENV['ALBUMS'])
   end
@@ -34,7 +34,7 @@ class PromotionController < ApplicationController
     render nothing: true
   end
 
-  def contribute
+  def send_contribution
     binding.pry
   end
 end

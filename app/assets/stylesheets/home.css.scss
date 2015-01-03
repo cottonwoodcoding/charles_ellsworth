@@ -32,6 +32,10 @@
   .banner-area {
     margin-left: 200px !important;
   }
+
+  .scrollable {
+    overflow-y: visible !important;
+  }
 }
 
 @media (max-width: 500px) {
@@ -46,6 +50,26 @@
 @media (max-width: 401px) {
   .posts {
     max-width: 73% !important;
+  }
+
+  .banner {
+    position: relative;
+    background: image-url('cover.jpg') 25% 0 no-repeat fixed !important; min-height: 650px;
+    height: 650px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+  }
+
+  .banner-area {
+    margin-left: -213px !important;
+    left: 0px !important;
+    top: 10px !important;
+  }
+
+  #logo_img img {
+    max-width: 75px !important;
+    max-height: 75px !important;
   }
 }
 
@@ -96,13 +120,11 @@ body {
 
 .posts {
   max-height: 650px;
-  overflow-y: scroll;
 }
 
 .twitter-content {
   max-height: 800px;
   max-width: 800px;
-  overflow-y: scroll;
 }
 
 .tweet-content {

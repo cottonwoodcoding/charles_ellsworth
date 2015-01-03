@@ -23,6 +23,14 @@
   margin-top: 10px;
 }
 
+.scrollable {
+  overflow-y: scroll;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
 #no-follow {
   a {
     text-decoration: none;

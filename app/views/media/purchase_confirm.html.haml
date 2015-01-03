@@ -5,7 +5,7 @@
   #purchase_email.text-center
     %label{for: 'email'} Email:
     %input{type: 'email', name: 'email', value: @details.payer.email, required: 'required'}
-  #review_purchase.well.text-center
+  #review_purchase.well.text-center.scrollable
     - @track_info.each do |album, tracks|
       - tracks.each_with_index do |track, index|
         %ul.no-list-style

@@ -4,6 +4,6 @@ if Rails.env == 'development'
     picasa_config = YAML.load_file(picasa_file)
     picasa_config.each { |key, value| ENV[key] = value }
   rescue
-    raise "There is no picasa config."
+    ''
   end
 end

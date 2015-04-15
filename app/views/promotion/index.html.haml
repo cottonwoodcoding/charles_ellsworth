@@ -9,58 +9,39 @@
 .button-container.center
   = link_to 'Get Involved', contribute_path, class: 'btn btn-inverse'
 %hr
-.main-video-section
+.col-xs-12.col-sm-8.col-sm-offset-2.main-video-section
   - if @first_main
     - key = @first_main.url.split("/").last
   - else
     - key = 'unknown'
-  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
-  %p.main-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
-    = @first_main.description unless @first_main.blank?
-  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
-    - if @main_videos.any?
-      - @main_videos.each do |vid|
-        - key = vid.url.split("/").last
-        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
-    - if admin_signed_in?
-      .add-main-video.add-video.pointer
-        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
+  .text-center
+    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
 .clearfix
 %hr
-.vlog-section
-  - if @first_vlog
-    - key = @first_vlog.url.split("/").last
-  - else
-    - key = 'unknown'
-  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
-  %p.vlog-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
-    = @first_vlog.description unless @first_vlog.blank?
-  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
-    - if @vlog_videos.any?
-      - @vlog_videos.each do |vid|
-        - key = vid.url.split("/").last
-        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
-    - if admin_signed_in?
-      .add-vlog-video.add-video.pointer
-        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
-.clearfix
-%hr
-.live-section
-  - if @first_live
-    - key = @first_live.url.split("/").last
-  - else
-    - key = 'unknown'
-  %iframe.col-lg-4.col-md-4.col-sm-12.col-xs-12{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
-  %p.live-detail.col-lg-2.col-md-2.col-sm-2.col-xs-2
-    = @first_live.description unless @first_live.blank?
-  .image-row.col-lg-6.col-md-6.col-sm-12.col-xs-12
-    - if @live_videos.any?
-      - @live_videos.each do |vid|
-        - key = vid.url.split("/").last
-        %img.vid-thumb.pointer{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'data-description' => vid.description}
-    - if admin_signed_in?
-      .add-live-video.add-video.pointer
-        = fa_icon 'plus', text: 'Add Video', class: 'pointer'
+.about-not-a-kickstarter.col-xs-12.col-sm-10.col-sm-offset-1
+  %p.lead.text-center Hello, for those of you who don’t know me, my name is Charles Ellsworth.
+  %p I’m a singer-songwriter that recently moved to Brooklyn, NY from Salt Lake City, UT.
+  %p Over the past several years I’ve released a couple of albums, toured around the country multiple times, experienced some of the highest of highs and the most depressing of lows. It’s been one hell of an adventure.
+  %p I’m very excited to share my next big project with all of you.  I’ve launched a website called www.NotAKickstarter.com as a way to raise money for my next album.  I’m selling my entire back catalog which consists of 33 songs for a minimum donation of $10.  THAT’S OVER 30 SONGS FOR $10!!! I’m trying to get 1000 people to buy my entire catalog for $10 so I have a $10,000 budget to record my next album with.  I know, that’s an insane amount of money.  It’s actually more money than I made on paper last year, but between Producers, Engineers, Musicians, Food, Travel, Mixing, Mastering, Practice Time, and even down to printing the record, this is pretty modest budget.
+  %p NotAKickstarter isn’t really a dig at Kickstarter or people who use it, it’s more my way of taking a different approach to crowdfunding.  I’m not asking for donations.  This is my attempt to offer something more in return for your money, but how do you give value to something that has no value? In today’s climate, not many people pay for music. I’m not complaining about it, I’m just stating the facts.  I get it, I use Spotify, YouTube and Soundcloud to listen to music.  Ten dollars a month for unlimited music is a steal compared to what I used to spend on a weekly basis in high school. The times have changed, the struggle hasn’t.  The best part is, I love the struggle. As a musician in today’s climate, you can’t be doing it for money.  The problem is, that while the music industry has changed, the cost of a quality recording experience, with a top producer hasn’t. It’s actually gone up. Which is why I need your help coming up with money for this record.
+
+  %p Even with your contribution, I still need 999 more people to contribute in order to reach my goal, which is why I’ll be uploading a lot of different videos, pictures, blog posts, etc.  Please share the website and videos with your friends and family.  Do your best to encourage them to donate.  I will be doing everything I can to get the information out to you via Facebook, Twitter, Instagram, and YouTube.  Just like every contribution to the campaign matters, every share, like, retweet, or subscription makes a huge difference in making this campaign successful, and this album a reality.
+  %p I want this to be a project that everyone involved can be proud of.  The support I’ve had throughout the years from my friends, family, and even complete strangers has been nothing short of overwhelming.  It is a big part of why I love what I do, and while I can’t even begin to make it up to all of you, I would love to hear your thoughts on how I can better this campaign or even just to hear how you are doing. Please feel free to email me anytime at cellsworth54@gmail.com and i’ll do my best to get back to you as soon as possible.
+  %p Every penny raised by this campaign will go directly into making the record. I want to give myself the best opportunity for success, not necessarily financial success, but having the freedom to work with the people I think would benefit the record the most, and being able to compensate them for their time and skills. With everyone’s help, and a lot of luck, we’ll reach the goal, and I can start recording this Fall with something to release early next year.
+  %hr
+.col-xs-12
+  .vlog-section.col-xs-12.col-sm-5.col-sm-offset-1
+    - if @first_vlog
+      - key = @first_vlog.url.split("/").last
+    - else
+      - key = 'unknown'
+    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  .live-section.col-xs-12.col-sm-6
+    - if @first_live
+      - key = @first_live.url.split("/").last
+    - else
+      - key = 'unknown'
+    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
 .clearfix
 %hr
 %h4.center.footer-text{class: footer_admin_class}

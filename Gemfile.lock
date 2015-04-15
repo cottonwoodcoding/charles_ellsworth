@@ -14,14 +14,6 @@ GIT
       activerecord (>= 4.0.0, < 5)
       railties (>= 4.0.0, < 5)
 
-GIT
-  remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: d0f8a68f30d7ffb34e505845a693df27467424f3
-  branch: master
-  submodules: true
-  specs:
-    datetimepicker-rails (3.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -57,6 +49,8 @@ GEM
     bcrypt (3.1.9)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap3-datetimepicker-rails (4.7.14)
+      momentjs-rails (>= 2.8.1)
     buftok (0.2.0)
     builder (3.1.4)
     byebug (3.5.1)
@@ -281,12 +275,12 @@ DEPENDENCIES
   activerecord-session_store!
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
+  bootstrap3-datetimepicker-rails (~> 4.7.14)
   byebug
   chronic
   coffee-rails (~> 4.0.0)
   curb
   dalli
-  datetimepicker-rails!
   devise
   font-awesome-rails
   haml-rails

@@ -25,6 +25,7 @@
     %h4.lato.album-title
       = a['NAME']
     %span
+      - Rails.logger.info "asset art: #{a['ART']}"
       %img.art-thumb{src: album_art_image_path(a['ART'])}
     %div
       - a['TRACKS'].each do |t|

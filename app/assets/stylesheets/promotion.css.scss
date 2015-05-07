@@ -29,11 +29,16 @@
   width: 20px;
 }
 .thermometer-inner {
-  background: red;
+  background: #5cb85c;
 }
 .thermometer-inner-h {
+  border: 1px solid #c4c4c4;
   height: 20px;
 }
 .thermometer-inner-v {
   width: 20px;
+}
+
+.thermometer {
+  box-shadow: 2px 2px 7px 1px;
 }

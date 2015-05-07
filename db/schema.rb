@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507005401) do
+ActiveRecord::Schema.define(version: 20150507020835) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150507005401) do
     t.float    "goal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "donors"
   end
 
   create_table "sessions", force: true do |t|

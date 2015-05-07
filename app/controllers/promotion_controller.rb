@@ -33,6 +33,7 @@ class PromotionController < ApplicationController
     @raised_value = @raised.raised_value
     @goal = @raised.goal
     @percent = ((@raised_value/@goal) * 100).round
+    @donors = @raised.donors
   end
 
   def update_contribution_text

@@ -24,13 +24,18 @@
     .text-center
       %h4
         = "(#{number_to_percentage(@percent, precision: 0)})"
+      %h4
+        = "Donors: #{@donors}"
   - if admin_signed_in?
     = form_for @raised do |f|
       = f.label :raised
       = f.text_field :raised_value
       = f.label :goal
       = f.text_field :goal
+      = f.label :donors
+      = f.text_field :donors, type: 'number', min: 0
       = f.submit
+    %br
   .thermometer{data: {percent: @percent}}
 %hr
 %h3.underline.text-center Albums

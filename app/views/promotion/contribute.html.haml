@@ -17,6 +17,21 @@
     %span.money-label.label.label-success.pointer.other_contribution Other
   %h3.contribution_redirect_message.hide.text-success
     Redirecting You To Paypal, Please Wait...
+  %hr
+  .text-center
+    %h3
+      = "#{number_to_currency(@raised_value)} raised of #{number_to_currency(@goal)} goal"
+    .text-center
+      %h4
+        = "(#{number_to_percentage(@percent, precision: 0)})"
+  - if admin_signed_in?
+    = form_for @raised do |f|
+      = f.label :raised
+      = f.text_field :raised_value
+      = f.label :goal
+      = f.text_field :goal
+      = f.submit
+  .thermometer{data: {percent: @percent}}
 %hr
 %h3.underline.text-center Albums
 - @albums['ALBUMS'].each_with_index do |a, i|

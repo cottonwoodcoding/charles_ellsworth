@@ -68,3 +68,5 @@ $ ->
 
   $('.other_contribution').click ->
     $('#other_contribution_modal').modal('show')
+
+  $('.thermometer').thermometer()

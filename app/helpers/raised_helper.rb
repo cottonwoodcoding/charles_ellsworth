@@ -1,0 +1,2 @@
+module RaisedHelper
+end

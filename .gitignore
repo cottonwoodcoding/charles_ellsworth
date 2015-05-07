@@ -24,3 +24,4 @@ log/
 *.key
 /public/assets
 /config/picasa.yml
+/config/braintree.yml

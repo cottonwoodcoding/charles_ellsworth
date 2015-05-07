@@ -29,6 +29,10 @@ class PromotionController < ApplicationController
   def contribute
     @contribution_text = PromotionText.first.contribution_text
     @albums = JSON.parse(ENV['ALBUMS'])
+    @raised = Raised.first
+    @raised_value = @raised.raised_value
+    @goal = @raised.goal
+    @percent = ((@raised_value/@goal) * 100).round
   end
 
   def update_contribution_text

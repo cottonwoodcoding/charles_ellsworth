@@ -14,3 +14,26 @@
 .edit-div {
   width: 90%;
 }
+
+.thermometer-outer {
+  background: gray;
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+}
+.thermometer-outer-h {
+  height: 20px;
+  width: 100%;
+}
+.thermometer-outer-v {
+  height: 200px;
+  width: 20px;
+}
+.thermometer-inner {
+  background: red;
+}
+.thermometer-inner-h {
+  height: 20px;
+}
+.thermometer-inner-v {
+  width: 20px;
+}

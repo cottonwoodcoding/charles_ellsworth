@@ -44,6 +44,7 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+gem 'braintree-rails', '~> 1.4.0'
 
 ruby '2.0.0'
 

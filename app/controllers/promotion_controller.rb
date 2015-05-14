@@ -56,6 +56,28 @@ class PromotionController < ApplicationController
     redirect_to response.redirect_uri
   end
 
+  def send_braintree_contribution
+    begin
+      customer = create_braintree_customer(params)
+      if customer.success?
+        payment = create_braintree_transaction(customer.customer.id, params[:contribution])
+        if payment.success?
+          flash[:info] = "Your contribution was successful.  You will recieve an email to download discography"
+          Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: params[:email]})
+          update_raised(params[:contribution].to_i)
+        else
+          flash[:error] = "Your contribution could not be processed."
+        end
+      else
+        errors = customer.errors.entries.map(&:message).join(' ')
+        flash[:error] = "Transaction was not successful: #{errors}"
+      end
+    rescue => e
+      flash[:error] = "Your contribution could not be processed: #{e.message}"
+    end
+    redirect_to contribute_path
+  end
+
   def accept_contribution
     token = params[:token]
     begin
@@ -67,6 +89,7 @@ class PromotionController < ApplicationController
       payment_response = paypal_request.checkout!(token, params[:PayerID], payment_request)
       if payment_response.ack == 'Success' && details.amount.total >= 10
         Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: details.payer.email})
+        update_raised(details.amount.total)
       end
     rescue => e
       logger.error e
@@ -77,26 +100,58 @@ class PromotionController < ApplicationController
     redirect_to action: :contribute
   end
 
-  private
+    private
 
-  def paypal_request
-    @paypal_request ||= Paypal::Express::Request.new(
-                                       :username   => ENV['paypal_username'],
-                                       :password   => ENV['paypal_password'],
-                                       :signature  => ENV['paypal_signature'])
-  end
+    def create_braintree_customer(opts)
+      Braintree::Customer.create(
+        first_name: opts[:first_name],
+        last_name: opts[:last_name],
+        email: opts[:email],
+        phone: opts[:phone],
+        credit_card: {
+          billing_address: {
+            postal_code: opts[:zipcode]
+        },
+        number: opts[:number],
+        expiration_date: "#{opts[:month]}/#{opts[:year]}",
+        cvv: opts[:cvv]
+        }
+      )
+    end
 
-  def update_header
-    f = PromotionText.first
-    f.header_content = params['header_text']
-    f.save
-    render nothing: true
-  end
+    def create_braintree_transaction(customer, amount)
+      Braintree::Transaction.sale(
+        customer_id: customer,
+        amount: amount,
+        options: { submit_for_settlement: true }
+      )
+    end
 
-  def update_footer
-    f = PromotionText.first
-    f.footer_content = params['footer_text']
-    f.save
-    render nothing: true
-  end
+    def paypal_request
+      @paypal_request ||= Paypal::Express::Request.new(
+                                         :username   => ENV['paypal_username'],
+                                         :password   => ENV['paypal_password'],
+                                         :signature  => ENV['paypal_signature'])
+    end
+
+    def update_header
+      f = PromotionText.first
+      f.header_content = params['header_text']
+      f.save
+      render nothing: true
+    end
+
+    def update_footer
+      f = PromotionText.first
+      f.footer_content = params['footer_text']
+      f.save
+      render nothing: true
+    end
+
+    def update_raised(amount)
+      raised = Raised.first
+      raised.raised_value += amount
+      raised.donors += 1
+      raised.save
+    end
 end

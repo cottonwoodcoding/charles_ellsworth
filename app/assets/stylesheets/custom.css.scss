@@ -134,3 +134,18 @@
 .btn-inverse:hover {
   color: white !important;
 }
+
+.success, .info, .error {
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+}
+
+.success, .info {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}

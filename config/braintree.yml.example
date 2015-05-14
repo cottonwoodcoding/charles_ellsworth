@@ -1,4 +1,4 @@
-braintree_merchant_id: ''
-braintree_public_key: ''
-braintree_private_key: ''
-braintree_client_side_encryption_key: ''
+braintree_merchant_id: 'id'
+braintree_public_key: 'key'
+braintree_private_key: 'key'
+braintree_client_side_encryption_key: 'key'

@@ -25,3 +25,4 @@ log/
 /public/assets
 /config/picasa.yml
 /config/braintree.yml
+/config/image_shack.yml

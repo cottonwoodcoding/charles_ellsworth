@@ -1,0 +1,61 @@
+#paymentModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.text-center.modal-title Contribute
+      .modal-body
+        %form.form-horizontal{action: '/send_braintree_contribution', method: :post}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          %h4.text-center Contribution Amound
+          .form-group
+            %label.col-sm-2.control-label{for: '#contribution'} Contribution
+            .col-sm-10
+              .input-group
+                %span.input-group-addon $
+                %input#contribution.form-control{type: 'number', min: '10', step: "0.50", 'data-number-to-fixed' => "2", 'data-number-stepfactor' => "100", placeholder: '', name: 'contribution', required: true, value: '10.00'}
+          %h4.text-center Personal Information
+          .form-group
+            %label.col-sm-2.control-label{for: '#first_name'} First Name
+            .col-sm-10
+              %input#first_name.form-control{type: 'text', placeholder: 'First Name', name: 'first_name', required: true}
+          .form-group
+            %label.col-sm-2.control-label{for: '#last_name'} Last Name
+            .col-sm-10
+              %input#last_name.form-control{type: 'text', placeholder: 'Last Name', name: 'last_name', required: true}
+          .form-group
+            %label.col-sm-2.control-label{for: '#email'} E-mail
+            .col-sm-10
+              %input#email.form-control{type: 'email', placeholder: 'email', name: 'email', required: true}
+          .form-group
+            %label.col-sm-2.control-label{for: '#zip'} Zip Code
+            .col-sm-10
+              %input#zip_code.form-control{type: 'text', placeholder: 'Zip Code', name: 'zipcode', required: true, pattern: '{5,5}(-\d{4,4})'}
+          .form-group
+            %label.col-sm-2.control-label{for: '#phone'} Phone
+            .col-sm-10
+              %input#phone.form-control{type: 'phone', placeholder: 'phone', name: 'phone', required: true}
+          %hr
+          %h4.text-center Payment Information
+          .form-group
+            %label.col-sm-2.control-label{for: '#card_number'} Card Number
+            .col-sm-10
+              %input#card_number.form-control.validate-required{'auto-complete' => 'off', 'data-encrypted-name' => 'number', type: 'text', placeholder: 'Card Number', name: 'number', required: true, maxlength: '19', pattern: '\d{4}\s*\d{4}\s*\d{4}\s*\d{4}'}
+          .form-group
+            %label.col-sm-2.control-label{for: '#cvv'} Card CVV
+            .col-sm-10
+              %input#cvv.form-control.validate-required{'auto-complete' => 'off', 'data-encrypted-name' => 'cvv', type: 'text', placeholder: 'Card CVV', name: 'cvv', required: true, maxlength: '4', pattern: '\d{3,4}'}
+          .form-group
+            %label.col-sm-2.control-label{for: '#month'} Expiration Month
+            .col-sm-10
+              %input#month.form-control.validate-required{'auto-complete' => 'off', type: 'number', placeholder: '01', name: 'month', required: true, maxlength: '2', min: '1'}
+          .form-group
+            %label.col-sm-2.control-label{for: '#year'} Expiration Year
+            .col-sm-10
+              %input#year.form-control.validate-required{'auto-complete' => 'off', type: 'number', placeholder: '2015', name: 'year', required: true, maxlength: '4', min: '2015'}
+
+
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-primary{:type => "submit"} Submit

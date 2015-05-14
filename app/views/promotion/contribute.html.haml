@@ -7,6 +7,13 @@
 %hr
 #contribution_container.text-center
   %h3.underline Contribute Here
+  .payment-type
+    .radio
+      %label
+        %input{type: 'radio', name: 'payment_type', value: 'paypal', checked: 'checked'} PayPal
+    .radio
+      %label
+        %input{type: 'radio', name: 'payment_type', value: 'credit'} Credit / Debit
   .contribution_actions
     %form#contribution_form.hide{action: '/send_contribution', method: 'post'}
       %input#contribution_amount{type: 'hidden', name: 'contribution_amount'}
@@ -54,3 +61,4 @@
   - if i % 3 == 0
     .clearfix
 = render(partial: 'other_contribution_modal')
+= render(partial: 'payment_modal')

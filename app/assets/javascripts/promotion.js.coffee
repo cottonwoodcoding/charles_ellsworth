@@ -70,3 +70,7 @@ $ ->
     $('#other_contribution_modal').modal('show')
 
   $('.thermometer').thermometer()
+
+  $('.payment-type .radio input').on 'change', ->
+    if $(@).val() == 'credit'
+      $('#paymentModal').modal('show')

@@ -19,7 +19,7 @@ module ImageShack
     c = Curl::Easy.new
     c.url = "#{url}?#{Curl::postalize(params)}"
     c.method type
-    c.ssl_verify_peer = false
+    c.ssl_verify_peer = 0
     c.perform
     c.response_code == 200 ? JSON.parse(c.body)['result'] : nil
   end

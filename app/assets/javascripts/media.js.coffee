@@ -32,55 +32,27 @@ $ ->
   window.onload = ->
     if window.location.pathname == '/media'
       $('.carousel-control').addClass('hidden')
-      $.ajax '/media/albums',
-        type: 'GET'
-        success: (data) ->
-          $('#default').parent().remove()
-          $('#album-spinner').addClass('hidden')
-          k = _.keys(data)
-          first = data[k[0]]
-          photos = first.photos
-          for p, index in photos
-            source = p.parsed_body.content.src
-            selected = 'not-selected'
-            selected = 'active' if index == 0
-            $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{source}'></div>")
+      $(".carousel").carousel interval: 4000
 
-          $(".carousel").carousel interval: 4000
+      $(document).on 'click', '.prev-button', (e) ->
+        $('.carousel').carousel('prev')
 
-          $(document).on 'click', '.prev-button', (e) ->
-            $('.carousel').carousel('prev')
+      $(document).on 'click', '.next-button', (e) ->
+        $('.carousel').carousel('next')
 
-          $(document).on 'click', '.next-button', (e) ->
-            $('.carousel').carousel('next')
-
-          $('.carousel-control').removeClass('hidden')
-
-          for a in _.pairs(data)
-            id = a[0]
-            name = a[1].name
-            $('#photo_album_list').append("<li><a id='#{id}' class='album-link' href='#'>>> #{name}</a></li>")
+      $('.carousel-control').removeClass('hidden')
 
   $(document).on 'click', '.album-link', (e) ->
-    $('#album-spinner').removeClass('hidden')
-    $('.carousel-control').addClass('hidden')
     e.preventDefault()
-    el = $(@)
-    $.ajax '/media/update_photos',
-      type: 'GET'
-      data:
-        id: el.attr('id')
-      success: (data) ->
-        $('#album-spinner').addClass('hidden')
-        $('.carousel').carousel('pause').removeData()
-        $('#photo-carousel #inner').empty()
-        for p, index in data.photos
-          selected = 'not-selected'
-          selected = 'active' if index == 0
-          $('#photo-carousel #inner').append("<div class='item #{selected}'><img src='#{p}'></div>")
-        $('.carousel').carousel interval: 4000
-        $('.carousel-control').removeClass('hidden')
-        $('#default').remove
+    $('.carousel').carousel('pause').removeData()
+    $('#inner.carousel-inner').empty()
+    count = 0
+    for src in $(@).data('images').split(',')
+      active = ' not-active'
+      active = ' active' if count == 0
+      $('#inner.carousel-inner').append("<div class='item#{active}'><img src='http://#{src}'></div>")
+      count += 1
+    $('.carousel').carousel interval: 4000
 
   $('.why_donate').on 'click', ->
     $('.why_donate').popover('toggle')

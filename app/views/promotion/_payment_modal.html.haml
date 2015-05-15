@@ -6,7 +6,7 @@
           %span{"aria-hidden" => "true"} ×
         %h4#myModalLabel.text-center.modal-title Contribute
       .modal-body
-        %form.form-horizontal{action: '/send_braintree_contribution', method: :post}
+        %form#payment_form.form-horizontal{action: '/send_braintree_contribution', method: :post}
           = hidden_field_tag :authenticity_token, form_authenticity_token
           %h4.text-center Contribution Amound
           .form-group

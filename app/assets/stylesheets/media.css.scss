@@ -235,3 +235,10 @@
 #purchase_email {
   margin-top: 30px;
 }
+
+.item {
+  img {
+    max-height: 500px !important;
+    max-width: 500px !important;
+  }
+}

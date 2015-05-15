@@ -74,3 +74,11 @@ $ ->
   $('.payment-type .radio input').on 'change', ->
     if $(@).val() == 'credit'
       $('#paymentModal').modal('show')
+
+  $(document).ready ->
+  if $('#payment_form').length > 0
+    $.ajax '/get_key',
+     type: 'GET'
+     success: (data) ->
+       braintree = Braintree.create(data)
+       braintree.onSubmitEncryptForm('payment_form')

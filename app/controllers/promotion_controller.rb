@@ -100,6 +100,10 @@ class PromotionController < ApplicationController
     redirect_to action: :contribute
   end
 
+  def get_key
+   render text: ENV['braintree_client_side_encryption_key']
+  end
+
     private
 
     def create_braintree_customer(opts)

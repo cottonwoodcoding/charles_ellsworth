@@ -1,34 +1,25 @@
 require 'open-uri'
+require "#{Rails.root}/lib/services/image_shack"
 
 class MediaController < ApplicationController
+  include ImageShack
 
   def index
     @albums = JSON.parse(ENV['ALBUMS'])
-  end
-
-  def albums
-    client = Picasa::Client.new(user_id: ENV['PICASA_USERNAME'],
-                                password: ENV['PICASA_PASSWORD'])
     @photo_data = {}
-    client.album.list.albums.each do |a|
-      album = client.album.show(a.id)
-      name = album.name
-      photos = album.photos
-      @photo_data[a.id] = {name: name, photos: photos}
-    end
-    respond_to do |format|
-      format.json { render json: @photo_data.to_json }
-    end
-    render nothing: true
-  end
-
-  def update_photos
-    client = Picasa::Client.new(user_id: ENV['PICASA_USERNAME'],
-                                password: ENV['PICASA_PASSWORD'])
-    photos_response = client.album.show(params['id']).photos
-    photos = photos_response.map { |p| p.content.src }
-    respond_to do |format|
-      format.json { render json: { photos: photos }.to_json }
+    image_shack_images.each do |image|
+      image_hash = {}
+      direct_link = image['direct_link']
+      image_hash[:src] = direct_link
+      image_hash[:description] = image['description']
+      image_hash[:thumb] = thumbnail(direct_link)
+      album = image['album']
+      if @photo_data.has_key?(album['id'])
+        @photo_data[album['id']][:images] << image_hash
+      else
+        @photo_data[album['id']] = { name: album['title'], images: [] }
+        @photo_data[album['id']][:images] << image_hash
+      end
     end
   end
 

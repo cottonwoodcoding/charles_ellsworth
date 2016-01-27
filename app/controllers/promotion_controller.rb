@@ -82,7 +82,7 @@ class PromotionController < ApplicationController
     rescue => e
       flash[:error] = "Your contribution could not be processed: #{e.message}"
     end
-    redirect_to contribute_path
+    redirect_to not_a_kickstarter_path
   end
 
   def accept_contribution
@@ -94,7 +94,7 @@ class PromotionController < ApplicationController
         :quantity      => 1,      # item quantity
         :amount        => details.amount.total)
       payment_response = paypal_request.checkout!(token, params[:PayerID], payment_request)
-      if payment_response.ack == 'Success' && details.amount.total >= 10
+      if payment_response.ack == 'Success'
         Curl.post("http://#{ENV['DIGITAL_OCEAN_IP']}/music/create_download_file", {email: details.payer.email})
         update_raised(details.amount.total)
       end
@@ -104,7 +104,7 @@ class PromotionController < ApplicationController
       redirect_to action: :contribute and return
     end
     flash[:notice] = 'Your contribution was successful! Please check your paypal email address if your contribution amount was over 10 dollars.'
-    redirect_to action: :contribute
+    redirect_to not_a_kickstarter_path
   end
 
   def get_key

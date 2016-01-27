@@ -8,13 +8,13 @@
       .modal-body
         %form#payment_form.form-horizontal{action: '/send_braintree_contribution', method: :post}
           = hidden_field_tag :authenticity_token, form_authenticity_token
-          %h4.text-center Contribution Amound
+          %h4.text-center Contribution Amount
           .form-group
             %label.col-sm-2.control-label{for: '#contribution'} Contribution
             .col-sm-10
               .input-group
                 %span.input-group-addon $
-                %input#contribution.form-control{type: 'number', min: '10', step: "0.50", 'data-number-to-fixed' => "2", 'data-number-stepfactor' => "100", placeholder: '', name: 'contribution', required: true, value: '10.00'}
+                %input#contribution.form-control{type: 'number', min: '1', 'data-number-to-fixed' => "2", 'data-number-stepfactor' => "100", placeholder: '', name: 'contribution', required: true, value: '10.00'}
           %h4.text-center Personal Information
           .form-group
             %label.col-sm-2.control-label{for: '#first_name'} First Name

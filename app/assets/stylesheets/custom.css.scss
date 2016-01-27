@@ -51,6 +51,7 @@
 
 #registration_modal .modal-body {
   height: 650px;
+  overflow-y: scroll;
 }
 
 .newsletter-picture {
@@ -148,4 +149,8 @@
 
 .error {
   background-color: red;
+}
+
+.hundred-p {
+  width: 100%;
 }

@@ -1,51 +1,97 @@
-%h2.center Welcome To My NotAKickStarter Page
-- if admin_signed_in?
-  - header_admin_class = 'pointer header-edit'
-  - footer_admin_class = 'pointer footer-edit'
-%h4.center.promo-intro{class: header_admin_class}
-  = @header_text
-  - if header_admin_class
-    %span.glyphicon.glyphicon-edit
-.button-container.center
-  = link_to 'Get Involved', contribute_path, class: 'btn btn-inverse'
+%h2.center Not A Kickstarter - give something now, get something now
 %hr
-.col-xs-12.col-sm-8.col-sm-offset-2.main-video-section
-  - if @first_main
-    - key = @first_main.url.split("/").last
-  - else
-    - key = 'unknown'
+.col-xs-12.col-md-4.col-md-offset-1.main-video-section
   .text-center
-    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
-.clearfix
+    .embed-responsive.embed-responsive-16by9
+      %iframe.embed-responsive-item{width: '480px', height: '270', src: "//www.youtube.com/embed/T3v_lwo8AAI", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+.col-xs-12.col-md-6
+  .thermometer.col-xs-12.pad-0{data: { percent: @percent }}
+  %br
+  %br
+  %br
+  %p.lead.col-xs-12
+    = "$#{number_with_precision(@raised_value, precision: 2)} raised of $#{number_with_precision(@goal, precision: 2)} goal / #{@percent} percent / #{@donors} donors"
+  .col-xs-12
+    %hr
+  .col-xs-12.donate-section
+    .col-md-4.col-md-offset-2.col-xs-12
+      %p.lead Donate Now:
+      .payment-type
+        .radio
+          %label
+            %input{type: 'radio', name: 'payment_type', value: 'paypal', checked: 'checked'} PayPal
+        .radio
+          %label
+            %input{type: 'radio', name: 'payment_type', value: 'credit'} Credit / Debit
+    .col-xs-12.col-md-6
+      %br
+      %br
+      .contribution_actions
+        %form#contribution_form{action: '/send_contribution', method: 'post'}
+          %input#contribution_amount{type: 'hidden', name: 'contribution_amount'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          %span.money-label.donation_label.label.label-success.pointer{value: '10'} $10
+          %span.money-label.donation_label.label.label-success.pointer{value: '25'} $25
+          %span.money-label.donation_label.label.label-success.pointer{value: '50'} $50
+          %span.money-label.label.label-success.pointer.other_contribution Other
+  .col-xs-12.white-background
+    %hr
+    %h3.contribution_redirect_message.hide.text-success
+      Redirecting You To Paypal, Please Wait...
 %hr
 .about-not-a-kickstarter.col-xs-12.col-sm-10.col-sm-offset-1
-  %p.lead.text-center Hello, for those of you who don’t know me, my name is Charles Ellsworth.
-  %p I’m a singer-songwriter that recently moved to Brooklyn, NY from Salt Lake City, UT.
-  %p Over the past several years I’ve released a couple of albums, toured around the country multiple times, experienced some of the highest of highs and the most depressing of lows. It’s been one hell of an adventure.
-  %p I’m very excited to share my next big project with all of you.  I’ve launched a website called www.NotAKickstarter.com as a way to raise money for my next album.  I’m selling my entire back catalog which consists of 33 songs for a minimum donation of $10.  THAT’S OVER 30 SONGS FOR $10!!! I’m trying to get 1000 people to buy my entire catalog for $10 so I have a $10,000 budget to record my next album with.  I know, that’s an insane amount of money.  It’s actually more money than I made on paper last year, but between Producers, Engineers, Musicians, Food, Travel, Mixing, Mastering, Practice Time, and even down to printing the record, this is pretty modest budget.
-  %p NotAKickstarter isn’t really a dig at Kickstarter or people who use it, it’s more my way of taking a different approach to crowdfunding.  I’m not asking for donations.  This is my attempt to offer something more in return for your money, but how do you give value to something that has no value? In today’s climate, not many people pay for music. I’m not complaining about it, I’m just stating the facts.  I get it, I use Spotify, YouTube and Soundcloud to listen to music.  Ten dollars a month for unlimited music is a steal compared to what I used to spend on a weekly basis in high school. The times have changed, the struggle hasn’t.  The best part is, I love the struggle. As a musician in today’s climate, you can’t be doing it for money.  The problem is, that while the music industry has changed, the cost of a quality recording experience, with a top producer hasn’t. It’s actually gone up. Which is why I need your help coming up with money for this record.
+  %h2.text-center What is Not a Kickstarter?
+  %p!="Not A Kickstarter is a fundraising platform created by musician Charles Ellsworth. Not A Kickstarter sets itself apart from other crowdfunding efforts through its <strong>basic philosophy of immediately rewarding contributors for their generosity.</strong>"
+  %p Charles established Not A Kickstarter as a means to raise funds to record his next full length record with a goal of having 1,000 people each make a donation of only $10 a piece. However, instead of having to wait for months or years for something new to be produced each donor immediately receives for their contribution the entire current Charles Ellsworth digital catalog.
+  %p.lead What you get:
+  %p!= "Charles has released a full length studio album, three studio eps, a full length split record, and a full length live album. With each contribution you receive more than <strong>33 songs, over 3 hours of music.</strong>"
+  %p.lead I get all of those songs for only $10?
+  %p!= "The original idea was to get 1000 people to donate $10 a piece so the full $10,000 could be raised for the record.  We’ve let the campaign evolve a little bit to where <strong>we still suggest a minimum donation of $10, but you can pay what you think all of the songs are worth.</strong>"
+  %p.lead When is the deadline?
+  %p!= "Monday, March 21. Thanks to the generous contributions so far Charles has been able to make a deposit with Bob Hoag at Flying Blanket Recording to reserve recording time for the next record. However, that means the push is now on to raise the rest of the funds to cover the full cost of recording the record. <strong>If we don’t raise enough money for the rest of the recording session, the deposit as well as our time slot will be completely lost.</strong>"
+  %p.lead How will the funds be used?
+  %ul.list-unstyled
+    %li $3,400 Paying for the rest of the studio time which includes Producers fees as well as Mixing
+    %li $600 Sending the record to be mastered by Jason Livermore at Blasting Room Studios (Hot Water Music, Gogol Bordello, Flobots)
+    %li $1,500 Paying Musicians for their time and talent
+    %li $1,000 Covering musician’s travel and food expenses
+    %li $500 Charles’ travel from New York and cost of living
+    %li $1,000 Distribution, Marketing, PR, and other promotion for the record
+  %p.lead In his own words:
+  %p “I have set a goal of a $10,000 budget to record my next album. I know, that’s an insane amount of money. It’s actually more money than I made on paper last year, but between Producers, Engineers, Musicians, Food, Travel, Mixing, Mastering, Practice Time, and even down to printing the record, this is pretty modest budget.
+  %p NotAKickstarter isn’t really a dig at Kickstarter or people who use it, it’s more my way of taking a different approach to crowdfunding. This is my attempt to offer something more in return for your money, but how do you give value to something that has no value? In today’s climate, not many people pay for music. I’m not complaining about it, I’m just stating the facts. I get it, I use Spotify, YouTube and Soundcloud to listen to music. Ten dollars a month for unlimited music is a steal compared to what I used to spend on a weekly basis in high school. The times have changed, the struggle hasn’t. The best part is, I love the struggle. As a musician in today’s climate, you can’t be doing it for money. The problem is, that while the music industry has changed, the cost of a quality recording experience, with a top producer hasn’t. It’s actually gone up. Which is why I need your help coming up with money for this record.”
 
-  %p Even with your contribution, I still need 999 more people to contribute in order to reach my goal, which is why I’ll be uploading a lot of different videos, pictures, blog posts, etc.  Please share the website and videos with your friends and family.  Do your best to encourage them to donate.  I will be doing everything I can to get the information out to you via Facebook, Twitter, Instagram, and YouTube.  Just like every contribution to the campaign matters, every share, like, retweet, or subscription makes a huge difference in making this campaign successful, and this album a reality.
-  %p I want this to be a project that everyone involved can be proud of.  The support I’ve had throughout the years from my friends, family, and even complete strangers has been nothing short of overwhelming.  It is a big part of why I love what I do, and while I can’t even begin to make it up to all of you, I would love to hear your thoughts on how I can better this campaign or even just to hear how you are doing. Please feel free to email me anytime at cellsworth54@gmail.com and i’ll do my best to get back to you as soon as possible.
-  %p Every penny raised by this campaign will go directly into making the record. I want to give myself the best opportunity for success, not necessarily financial success, but having the freedom to work with the people I think would benefit the record the most, and being able to compensate them for their time and skills. With everyone’s help, and a lot of luck, we’ll reach the goal, and I can start recording this Fall with something to release early next year.
-  %hr
 .col-xs-12
-  .vlog-section.col-xs-12.col-sm-5.col-sm-offset-1
+  %hr
+.clearfix
+%h2.text-center What you get right now by making a donation
+- @albums['ALBUMS'].each_with_index do |a, i|
+  - i += 1
+  .col-sm-3.text-center
+    %h4.lato.album-title
+      = a['NAME']
+    %img.art-thumb{src: album_art_image_path(a['ART'])}
+.col-xs-12
+  %hr
+  .vlog-section.col-xs-12.col-sm-4
     - if @first_vlog
       - key = @first_vlog.url.split("/").last
     - else
       - key = 'unknown'
-    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
-  .live-section.col-xs-12.col-sm-6
+    %iframe{width: '460px', height: '270', src: "//www.youtube.com/embed/8LmE4zB-Gpw", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  .live-section.col-xs-12.col-sm-4
     - if @first_live
       - key = @first_live.url.split("/").last
     - else
       - key = 'unknown'
-    %iframe{width: '480px', height: '270', src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+    %iframe{width: '460px', height: '270', src: "//www.youtube.com/embed/8LmE4zB-Gpw", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+  .live-section.col-xs-12.col-sm-4
+    - if @first_live
+      - key = @first_live.url.split("/").last
+    - else
+      - key = 'unknown'
+    %iframe{width: '460px', height: '270', src: "//www.youtube.com/embed/8LmE4zB-Gpw", 'frameborder' => '0', 'allowfullscreen' => 'true'}
 .clearfix
 %hr
-%h4.center.footer-text{class: footer_admin_class}
-  = @footer_text
-  - if footer_admin_class
-    %span.glyphicon.glyphicon-edit
-= render partial: '/layouts/add_video'
+= render(partial: 'other_contribution_modal')
+= render(partial: 'payment_modal')

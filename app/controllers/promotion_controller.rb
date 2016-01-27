@@ -8,6 +8,13 @@ class PromotionController < ApplicationController
     @first_live = Video.where(category: 'live', priority: 1).first
     @header_text = PromotionText.first.header_content
     @footer_text = PromotionText.first.footer_content
+    @contribution_text = PromotionText.first.contribution_text
+    @albums = JSON.parse(ENV['ALBUMS'])
+    @raised = Raised.first
+    @raised_value = @raised.raised_value
+    @goal = @raised.goal
+    @percent = ((@raised_value/@goal) * 100).round
+    @donors = @raised.donors
   end
 
   def add_video
